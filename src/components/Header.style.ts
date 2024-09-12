@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Header = styled.header`
+  padding-top: 66px;
   position: fixed;
   left: 0;
   top: 0;
@@ -9,10 +10,10 @@ export const Header = styled.header`
   background-color: #ffffff;
   box-shadow: 0 20px 20px -10px rgba(32, 44, 153, 0.02);
   z-index: 10;
+  text-align: left;
 `
 
 export const DivContents = styled.div`
-  display: flex;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -26,7 +27,6 @@ export const DivContents = styled.div`
 `
 
 export const DivLogoZone = styled.div`
-  display: flex;
   align-items: center;
   font-size: 13px;
   color: gray;
@@ -34,11 +34,4 @@ export const DivLogoZone = styled.div`
 
 export const ImgLogo = styled.img`
   margin-right: 12px;
-`
-
-const Button = styled.button`
-  padding: 10px 15px;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
 `

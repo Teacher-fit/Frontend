@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <S.Root>
       <Header />
+        
       <Footer />
     </S.Root>
   )
