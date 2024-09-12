@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import * as S from './Header.style'
 
 import { Link } from 'react-router-dom'
@@ -10,11 +10,12 @@ const Header = () => {
       <S.DivContents>
         <S.DivLogoZone>
           <Link to="/">
-            <S.ImgLogo src={logo} alt="로고" />
+            <S.ImgLogo src={logo} alt="로고"/>
           </Link>
           <div>
-            <p style={{ fontSize: '1.05em' }}>
-              티쳐핏은 교사의 디지털 수업 역량 강화를 위한 에듀테크 콘텐츠 설계를 위한 플랫폼입니다.
+            <p style={{ fontSize: '1.05em', textAlign: 'left' }}>
+              티쳐핏은 교사의 디지털 수업 역량 강화를 위한 에듀테크 콘텐츠
+              설계를 위한 플랫폼입니다.
             </p>
           </div>
         </S.DivLogoZone>
