@@ -51,7 +51,7 @@ const Home = () => {
         <S.Ol>
           <S.Li
             style={{
-              backgroundColor: '#F7F7FF',
+              //backgroundColor: '#F7F7FF',
               fontSize: '20px',
               color: '#4049F4',
               fontWeight: 'bold',
@@ -67,7 +67,7 @@ const Home = () => {
         <S.Ol>
           <S.Li
             style={{
-              backgroundColor: '#F7F7FF',
+              //backgroundColor: '#F7F7FF',
               fontSize: '20px',
               color: '#4049F4',
               fontWeight: 'bold',
@@ -85,7 +85,7 @@ const Home = () => {
         <S.Ol>
           <S.Li
             style={{
-              backgroundColor: '#F7F7FF',
+              //backgroundColor: '#F7F7FF',
               fontSize: '20px',
               color: '#4049F4',
               fontWeight: 'bold',
