@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const FooterContainer = styled.p`
-  left: 0;  
-  position: fixed;  
+  left: 0;
   bottom: 0;
   width: 100%;
+  background-color: #ffffff;
+  margin-top: 187px;
 `;
 
 export const DivContents = styled.div` 
@@ -34,5 +35,5 @@ export const DivLogoZone = styled.div`
 
 export const ImgLogo = styled.img`
   margin-right: 0px;
-  transform: scale(0.8);
+  transform: scale(0.7);
 `
