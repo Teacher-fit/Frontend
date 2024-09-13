@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as S from './Home.style'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import SearchBox from '../components/SearchBox'
 
 const Home = () => {
+  useEffect(() => {
+    document.title = 'TeacherFit'
+  }, [])
   return (
     <S.Root>
       <Header />
       <S.Menu>
         <S.MenuCategory>HOME</S.MenuCategory>
-        <S.MenuCategory>나만의 FIT 찾기</S.MenuCategory>
+        <S.MenuCategory style={{ backgroundColor: 'white' }}>
+          나만의 <S.Fit>Fit</S.Fit> 찾기
+        </S.MenuCategory>
+        {/* backgroundColor & onclick 로직 구현 */}
       </S.Menu>
       <S.SchoolMenu>
         <S.SchoolCategory>초등학교</S.SchoolCategory>
@@ -43,27 +49,53 @@ const Home = () => {
       <S.Heading>단원 선택</S.Heading>
       <S.OlContainer>
         <S.Ol>
-          <li>대단원</li>
-          <li>I. 자신과의 관계</li>
-          <li>II. 타인과의 관계</li>
-          <li>III. 사회·공동체와의 관계</li>
-          <li>IV. 자연과의 관계</li>
+          <S.Li
+            style={{
+              backgroundColor: '#F7F7FF',
+              fontSize: '20px',
+              color: '#4049F4',
+              fontWeight: 'bold',
+            }}
+          >
+            대단원
+          </S.Li>
+          <S.Li>I. 자신과의 관계</S.Li>
+          <S.Li>II. 타인과의 관계</S.Li>
+          <S.Li>III. 사회·공동체와의 관계</S.Li>
+          <S.Li>IV. 자연과의 관계</S.Li>
         </S.Ol>
         <S.Ol>
-          <li>중단원</li>
-          <li>1. 도덕적인 삶</li>
-          <li>2. 도덕적 행동</li>
-          <li>3. 자아 정체성</li>
-          <li>4. 행복한 삶</li>
-          <li>5. 행복한 삶</li>
+          <S.Li
+            style={{
+              backgroundColor: '#F7F7FF',
+              fontSize: '20px',
+              color: '#4049F4',
+              fontWeight: 'bold',
+              width: '100%'
+            }}
+          >
+            중단원
+          </S.Li>
+          <S.Li>1. 도덕적인 삶</S.Li>
+          <S.Li>2. 도덕적 행동</S.Li>
+          <S.Li>3. 자아 정체성</S.Li>
+          <S.Li>4. 행복한 삶</S.Li>
+          <S.Li>5. 행복한 삶</S.Li>
         </S.Ol>
         <S.Ol>
-          <li>소단원</li>
-          <li style={{ backgroundColor: '3B31FF' }}>
-            01 사람을 사람답게 만드는 것은 무엇인가?
-          </li>
-          <li>02 도덕은 무엇이고 왜 필요한가?</li>
-          <li>03 내가 도덕적이어야 하는 이유는 무엇일까?</li>
+          <S.Li
+            style={{
+              backgroundColor: '#F7F7FF',
+              fontSize: '20px',
+              color: '#4049F4',
+              fontWeight: 'bold',
+            }}
+          >
+            소단원
+          </S.Li>
+          <S.Li>01 사람을 사람답게 만드는 것은 무엇인가?</S.Li>
+          <S.Li>02 도덕은 무엇이고 왜 필요한가?</S.Li>
+          <S.Li>03 내가 도덕적이어야 하는 이유는 무엇일까?</S.Li>
         </S.Ol>
       </S.OlContainer>
       <SearchBox />
