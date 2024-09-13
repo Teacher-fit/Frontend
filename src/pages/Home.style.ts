@@ -9,7 +9,7 @@ export const Root = styled.div`
 
 export const Menu = styled.div`
   /* layout */
-  display: inline-flex;
+  display: flex;  /* inline-flex를 flex로 변경 */
   padding: 6px;
   align-items: flex-start;
   text-align: center;
@@ -28,6 +28,7 @@ export const Menu = styled.div`
 `;
 
 export const MenuCategory = styled.button`
+  flex-grow: 1;  /* 각 버튼이 동일한 너비를 가짐 */
   background-color: #D3D5FF;
   font-size: 15px;
   color: #666;
@@ -44,18 +45,18 @@ export const MenuCategory = styled.button`
 
   &:hover {
     background-color: #ffffff;
-    color: #000000 ;
+    color: #000000;
     border: 0;
   }
 
   &.active {
-    background-color:#ffffff;
+    background-color: #ffffff;
     color: #000000;
     border: none;
     outline: none;
   }
 
-  &.focus{
+  &.focus {
     outline: none;
     border: none;
   }
@@ -149,6 +150,7 @@ export const Heading = styled.h1`
   margin: 0;
   padding: 0;
   text-align: left;
+  margin-bottom: 23px;
 `;
 
 export const Fit = styled.span`
@@ -158,10 +160,19 @@ export const Fit = styled.span`
 
 export const OlContainer = styled.div`
   display: flex;
+  margin-bottom: 89px;
+  width: 100%;
+  justify-content: space-between;
+  border: 0.3px solid #D9D9D9;
 `;
 
 export const Ol = styled.ol`
   list-style-type: none;
+  color: #666666;
+`;
+
+export const Li = styled.li`
+  margin-top: 15px;
 `;
 
 export const InputBox = styled.input`
@@ -170,7 +181,6 @@ export const InputBox = styled.input`
   border-radius: 8px;
   background-color: #F7F7FF;
   border: solid #D3D5FF;
-  margin-top: 23px;
   padding: 16px;
   font-size: 18px;
 
