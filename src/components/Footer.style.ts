@@ -30,10 +30,16 @@ export const DivLogoZone = styled.div`
   align-items: center;
   text-align: center;
   font-size: 13px;
-  color: gray;
+  gap: 10px;
 `
 
 export const ImgLogo = styled.img`
   margin-right: 0px;
-  transform: scale(0.7);
+  transform: scale(0.8);
 `
+
+export const Span = styled.span`
+  font-size: 1.2em;
+  margin-right: 40px;
+  white-space: nowrap;
+`;

@@ -5,6 +5,10 @@ export const Root = styled.div`
   min-height: 100vh;  /* Viewport Height, 화면 전체 높이 */
   display: flex;
   flex-direction: column;  /* Column으로 쌓이도록 설정 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 3000px;  
 `
 
 export const Menu = styled.div`
@@ -67,7 +71,7 @@ export const SchoolMenu = styled.div`
   display: flex;
   margin-left: 0px;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 `;
 
 export const SchoolCategory = styled.button`
@@ -107,10 +111,10 @@ export const SearchBox = styled.div`
   background-color: #fafafa;
   padding: 43px;
   
-  border-color: #000000;
+  border-color: grey;
   border-style: solid;
-  border-width: 1px 0px 0px 0px;;
-  margin-bottom: 89px;
+  border-width: 0.5px 0px 0px 0px;
+  margin-bottom: 0px;
 `;
 
 export const FilterMenu = styled.div`
@@ -146,21 +150,22 @@ export const FilterCategory = styled.button`
 
 export const Heading = styled.h1`
   font-size: 24px;
-  color: black; /* 텍스트가 명확하게 보이는 색상 */
+  color: black; 
   margin: 0;
   padding: 0;
   text-align: left;
   margin-bottom: 23px;
+  margin-top: 89px;
 `;
 
 export const Fit = styled.span`
   color: #4049F4; /* 파란색으로 강조 */
-  font-weight: bold; /* 강조된 텍스트 */
+  font-weight: bold; 
 `;
 
 export const OlContainer = styled.div`
   display: flex;
-  margin-bottom: 89px;
+  margin-bottom: 0px;
   width: 100%;
   justify-content: space-between;
   border: 0.3px solid #D9D9D9;
@@ -190,4 +195,35 @@ export const InputBox = styled.input`
     line-height: 1.2; /* 줄 간격 조절 */
     color: #B3B3B3;
   }
+`;
+
+export const Detail = styled.p`
+  background-color: white;
+  border: none;
+  margin-left: 45px;
+  weight: 20%;
+  text-align: left;
+  margin-top: 0;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  color: #757575;
+`;
+
+export const SubmitBtn = styled.button`
+  margin-top: 20px;
+  width: 170px;
+  background-color: #4049F4;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+`;
+
+/* 부모 컨테이너에 flexbox 적용 */
+export const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  width: 100%;
+  height: 100%;
 `;
