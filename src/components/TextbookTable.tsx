@@ -40,13 +40,9 @@ const TextbookTable = () => {
           <StyledHeading>대단원</StyledHeading>
           <StyledUl>
             {TextbookData.map((unit) => (
-              <li
-                key={unit.id}
-                onClick={() => handleUnitClick(unit)}
-                style={{ paddingBottom: '10px' }}
-              >
+              <StyledLi key={unit.id} onClick={() => handleUnitClick(unit)}>
                 {unit.title}
-              </li>
+              </StyledLi>
             ))}
           </StyledUl>
         </Column>
@@ -57,17 +53,16 @@ const TextbookTable = () => {
           {selectedUnit ? (
             <StyledUl>
               {selectedUnit.chapters.map((chapter) => (
-                <li
+                <StyledLi
                   key={chapter.id}
                   onClick={() => handleChapterClick(chapter)}
-                  style={{ paddingBottom: '10px' }}
                 >
                   {chapter.title}
-                </li>
+                </StyledLi>
               ))}
             </StyledUl>
           ) : (
-            <p></p>
+            <p style={{color: '#666666'}}>대단원을 선택해 주세요.</p>
           )}
         </Column>
 
@@ -77,11 +72,11 @@ const TextbookTable = () => {
           {selectedChapter ? (
             <StyledUl>
               {selectedChapter.sections.map((section) => (
-                <li key={section.id} style={{ paddingBottom: '10px' }}>{section.title}</li>
+                <StyledLi key={section.id}>{section.title}</StyledLi>
               ))}
             </StyledUl>
           ) : (
-            <p></p>
+            <p style={{color: '#666666'}}>중단원을 선택해 주세요.</p>
           )}
         </Column>
       </TableContainer>
@@ -92,6 +87,15 @@ const TextbookTable = () => {
 export default TextbookTable
 
 /* Styled Components */
+const StyledLi = styled.li`
+  padding-bottom: 10px;
+  color: #666666;
+  transition: all 0.3s ease;
+  &:hover {
+    font-weight: bold;
+  }
+`
+
 const StyledUl = styled.ul`
   list-style: none;
   text-align: left;
@@ -110,7 +114,7 @@ const TableContainer = styled.div`
 
 const Column = styled.div`
   flex: 1; /* 각 컬럼이 동일한 너비를 가짐 */
-  width: 300px; 
+  width: 300px;
   padding-left: 0px;
   padding-right: 0px;
   box-sizing: border-box;
