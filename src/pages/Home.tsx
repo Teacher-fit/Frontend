@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './Home.style'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -10,16 +10,31 @@ const Home = () => {
   useEffect(() => {
     document.title = 'TeacherFit'
   }, [])
-  const [edutech, setEdutech] = React.useState(false)
+
+  const [edutech, setEdutech] = useState(false)
+  const [activeButton, setActiveButton] = useState<string>('home')
+
+  // 버튼 클릭 시 active 상태 변경
+  const handleButtonClick = (buttonName: string) => {
+    setActiveButton(buttonName)
+  }
+
   return (
     <S.Root>
       <Header />
       <S.Menu>
-        <S.MenuCategory>HOME</S.MenuCategory>
-        <S.MenuCategory style={{ backgroundColor: 'white' }}>
+        <S.MenuCategory
+          isActive={activeButton === 'home'}
+          onClick={() => handleButtonClick('home')}
+        >
+          HOME
+        </S.MenuCategory>
+        <S.MenuCategory
+          isActive={activeButton === 'fit'}
+          onClick={() => handleButtonClick('fit')}
+        >
           나만의 <S.Fit>Fit</S.Fit> 찾기
         </S.MenuCategory>
-        {/* backgroundColor & onclick 로직 구현 */}
       </S.Menu>
       <S.SchoolMenu>
         <S.SchoolCategory>초등학교</S.SchoolCategory>
@@ -58,7 +73,7 @@ const Home = () => {
       <Checkbox checked={edutech} onChange={setEdutech}>
         에듀테크 도구 활용 여부
       </Checkbox>
-      <S.Detail>세부내용</S.Detail> {/*세부 내용 페이지 확인하기*/}
+      <S.Detail>세부내용</S.Detail> {/* 세부 내용 페이지 확인하기 */}
       <S.BtnContainer>
         <S.SubmitBtn>활동 생성하기</S.SubmitBtn>
       </S.BtnContainer>

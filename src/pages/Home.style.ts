@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Root = styled.div`
-  background-color: white;
   min-height: 100vh;  /* Viewport Height, 화면 전체 높이 */
   display: flex;
   flex-direction: column;  /* Column으로 쌓이도록 설정 */
@@ -21,7 +20,7 @@ export const Menu = styled.div`
   margin: 0; 
   margin-bottom: 100px;
   margin-top: 50px;
-  width: 227px;
+  width: 30%;
   font-size: 16px;
 
   /* Style */
@@ -31,33 +30,38 @@ export const Menu = styled.div`
   background: #F7F7FF;
 `;
 
-export const MenuCategory = styled.button`
-  flex-grow: 1;  /* 각 버튼이 동일한 너비를 가짐 */
-  background-color: #D3D5FF;
+/*
+export const Fit = styled.span`
+  color: #4049f4;
+  font-weight: bold;
+`;
+*/
+
+export const MenuCategory = styled.button<{ isActive: boolean }>`
+  flex-grow: 1; /* 각 버튼이 동일한 너비를 가짐 */
+  background-color: ${({ isActive }) => (isActive ? '#D3D5FF' : '#ffffff')}; /* 클릭 여부에 따라 배경색 결정 */
   font-size: 15px;
-  color: #666;
+  color: ${({ isActive }) => (isActive ? '#666' : '#000000')};
   border: none;
   border-radius: 4px;
   padding: 8px 20px;
   white-space: nowrap;
   font-weight: bold;
-  transition: transform 0.3s linear;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-
+  transition: all 0.3s ease;
+  width: auto;
+  
   &:hover {
-    background-color: #ffffff;
+    background-color: #f0f0f0;
     color: #000000;
     border: 0;
+    outline: none;
   }
 
-  &.active {
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    outline: none;
+  &:focus {
+    outline: none;  /* 포커스 시 하이라이트 제거 */
+    border: none;   /* 포커스 시 테두리 제거 */
   }
 
   &.focus {
@@ -65,7 +69,6 @@ export const MenuCategory = styled.button`
     border: none;
   }
 `;
-
 
 export const SchoolMenu = styled.div`
   display: flex;
@@ -84,7 +87,7 @@ export const SchoolCategory = styled.button`
   white-space: nowrap;
   font-weight: bold;
   margin-right: 17px;
-  transition: transform 0.5s linear;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: #4049f4;
