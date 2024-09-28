@@ -54,11 +54,8 @@ const Home = () => {
       </S.Menu>
       <S.SchoolMenu>
         <S.SchoolCategory
-          isActive1={selectedSchool === 0}
-          onClick={() => handleSchoolClick(0)}
-          style={{
-            backgroundColor: selectedSchool === 0 ? '#6E75F5' : '#ffffff',
-          }}
+          isActive1={false}
+          onClick={() => alert('콘텐츠 개발중입니다.')}
         >
           초등학교
         </S.SchoolCategory>
@@ -74,16 +71,12 @@ const Home = () => {
         </S.SchoolCategory>
 
         <S.SchoolCategory
-          isActive1={selectedSchool === 2}
-          onClick={() => handleSchoolClick(2)}
-          style={{
-            backgroundColor: selectedSchool === 2 ? '#6E75F5' : '#ffffff',
-          }}
+          isActive1={false}
+          onClick={() => alert('콘텐츠 개발중입니다.')}
         >
           고등학교
         </S.SchoolCategory>
       </S.SchoolMenu>
-
       <S.SearchBox>
         <S.FilterMenu>
           <S.Label>학년 선택</S.Label>
@@ -115,35 +108,39 @@ const Home = () => {
         </S.FilterMenu>
         <S.FilterMenu>
           <S.Label>과목 선택</S.Label>
-          {['도덕①', '도덕②'].map((subject, index) => (
-            <S.FilterCategory
-              key={index}
-              onClick={() => setSelectedSubject(index)}
-              isActive2={selectedSubject === index}
-              style={{
-                backgroundColor:
-                  selectedSubject === index ? '#6E75F5' : '#ffffff',
-              }}
-            >
-              {subject}
-            </S.FilterCategory>
-          ))}
+          <S.FilterCategory
+            onClick={() => setSelectedSubject(0)}
+            isActive2={selectedSubject === 0}
+            style={{
+              backgroundColor: selectedSubject === 0 ? '#6E75F5' : '#ffffff',
+            }}
+          >
+            도덕①
+          </S.FilterCategory>
+          <S.FilterCategory
+            onClick={() => alert('콘텐츠 준비중입니다.')}
+            isActive2={false}
+          >
+            도덕②
+          </S.FilterCategory>
         </S.FilterMenu>
         <S.FilterMenu>
           <S.Label>출판사 선택</S.Label>
-          {['미래엔', '천재'].map((publisher, index) => (
-            <S.FilterCategory
-              key={index}
-              onClick={() => setSelectedPublisher(index)}
-              isActive2={selectedPublisher === index}
-              style={{
-                backgroundColor:
-                  selectedPublisher === index ? '#6E75F5' : '#ffffff',
-              }}
-            >
-              {publisher}
-            </S.FilterCategory>
-          ))}
+          <S.FilterCategory
+            onClick={() => alert('콘텐츠 준비중입니다.')}
+            isActive2={false}
+          >
+            미래엔
+          </S.FilterCategory>
+          <S.FilterCategory
+            onClick={() => setSelectedPublisher(1)}
+            isActive2={selectedPublisher === 1}
+            style={{
+              backgroundColor: selectedPublisher === 1 ? '#6E75F5' : '#ffffff',
+            }}
+          >
+            천재
+          </S.FilterCategory>
         </S.FilterMenu>
       </S.SearchBox>
       <S.Heading>단원 선택</S.Heading>
@@ -156,7 +153,7 @@ const Home = () => {
       <Checkbox checked={edutech} onChange={setEdutech}>
         에듀테크 도구 활용 여부
       </Checkbox>
-      <S.Detail>세부내용</S.Detail> {/* 세부 내용 페이지 확인하기 */}
+      <S.Detail>세부 내용</S.Detail> {/* 세부 내용 페이지 확인하기 */}
       <S.BtnContainer>
         <S.SubmitBtn>활동 생성하기</S.SubmitBtn>
       </S.BtnContainer>

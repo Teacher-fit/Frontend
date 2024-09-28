@@ -84,13 +84,11 @@ export const SchoolCategory = styled.button<{ isActive1: boolean }>`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #4049f4;
     border: 0;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
   }
 
   &:active {
-    background-color: #4049f4;
     color: #ffffff;
     border: none;
     outline: none;
@@ -137,13 +135,12 @@ export const FilterCategory = styled.button<{ isActive2: boolean }>`
 
   &:hover, &:active {
     font-weight: bold;
-    border: solid #6E75F5;
-    background-color: #6E75F5;
+    border: solid #D9D9D9;
   }
   
   &:focus {
     outline: none; 
-    border: none;   
+    border: solid #D9D9D9;
   }
 `;
 
