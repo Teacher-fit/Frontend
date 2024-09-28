@@ -39,7 +39,7 @@ export const Fit = styled.span`
 
 export const MenuCategory = styled.button<{ isActive: boolean }>`
   flex-grow: 1; /* 각 버튼이 동일한 너비를 가짐 */
-  background-color: ${({ isActive }) => (isActive ? '#D3D5FF' : '#ffffff')}; /* 클릭 여부에 따라 배경색 결정 */
+  background-color: ${({ isActive }) => (isActive ? '#D3D5FF' : '#ffffff')}; !important
   font-size: 15px;
   color: ${({ isActive }) => (isActive ? '#666' : '#000000')};
   border: none;
@@ -60,13 +60,8 @@ export const MenuCategory = styled.button<{ isActive: boolean }>`
   }
 
   &:focus {
-    outline: none;  /* 포커스 시 하이라이트 제거 */
-    border: none;   /* 포커스 시 테두리 제거 */
-  }
-
-  &.focus {
-    outline: none;
-    border: none;
+    outline: none; 
+    border: none;   
   }
 `;
 
@@ -77,10 +72,9 @@ export const SchoolMenu = styled.div`
   margin-bottom: 15px;
 `;
 
-export const SchoolCategory = styled.button`
-  background-color: #ffffff;
+export const SchoolCategory = styled.button<{ isActive1: boolean }>`
   font-size: 20px;
-  color: #666;
+  color: ${({ isActive1 }) => (isActive1 ? '#ffffff' : '#666')}; 
   border: none;
   border-radius: 40px;
   padding: 12px 18px;
@@ -91,12 +85,11 @@ export const SchoolCategory = styled.button`
 
   &:hover {
     background-color: #4049f4;
-    color: #ffffff ;
     border: 0;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
   }
 
-  &.active {
+  &:active {
     background-color: #4049f4;
     color: #ffffff;
     border: none;
@@ -104,7 +97,7 @@ export const SchoolCategory = styled.button`
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
   }
 
-  &.focus{
+  &:focus{
     outline: none;
     border: none;
   }
@@ -133,21 +126,24 @@ export const Label = styled.p`
   color: #000000;
 `;
 
-export const FilterCategory = styled.button`
-  background-color: #ffffff;    
+export const FilterCategory = styled.button<{ isActive2: boolean }>`
   border-radius: 40px;
   padding: 6px 40px;
   margin-right: 15px;
   font-size: 20px;
   border: solid #D9D9D9;
-  color: #666666;
-  transition: transform 0.5s linear;
+  color: ${({ isActive2 }) => (isActive2 ? '#ffffff' : '#666666')}; 
+  transition: all 0.3s ease;
 
   &:hover, &:active {
     font-weight: bold;
-    color: #ffffff;
     border: solid #6E75F5;
-    background-color: #6E75F5; /* background-color가 변경되도록 수정 */
+    background-color: #6E75F5;
+  }
+  
+  &:focus {
+    outline: none; 
+    border: none;   
   }
 `;
 
@@ -220,6 +216,11 @@ export const SubmitBtn = styled.button`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
+
+  &:focus {
+    outline: none; 
+    border: none;   
+  }
 `;
 
 /* 부모 컨테이너에 flexbox 적용 */
