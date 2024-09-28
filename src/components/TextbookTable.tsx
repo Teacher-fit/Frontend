@@ -2,6 +2,12 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { TextbookData } from '../mock/TextbookData'
 
+interface Unit {
+  id: number
+  title: string
+  chapters: Chapter[]
+}
+
 interface Chapter {
   id: number
   title: string
@@ -13,23 +19,33 @@ interface Section {
   title: string
 }
 
-interface Unit {
-  id: number
-  title: string
-  chapters: Chapter[]
-}
-
 const TextbookTable = () => {
+  // Unit >> Chapter >> Section
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null)
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null)
+  const [selectedSection, setSelectedSection] = useState<Section | null>(null)
+
+  const [selectedUnitId, setSelectedUnitId] = useState<number | null>(null)
+  const [selectedChapterId, setSelectedChapterId] = useState<number | null>(
+    null
+  )
+  const [selectedSectionId, setSelectedSectionId] = useState<number | null>(
+    null
+  )
 
   const handleUnitClick = (unit: Unit) => {
     setSelectedUnit(unit)
-    setSelectedChapter(null) // 대단원을 선택할 때 중단원 초기화
+    setSelectedChapter(null) // 대단원을 새로 선택할 때 기선택했던 중단원 초기화
+    setSelectedChapterId(null) // 대단원을 새로 선택할 때 기선택했던 중단원 ID 초기화
   }
 
   const handleChapterClick = (chapter: Chapter) => {
     setSelectedChapter(chapter)
+    setSelectedSectionId(null) // 중단원을 새로 선택할 기선택했던 소단원 ID 초기화
+  }
+
+  const handleSectionClick = (section: Section) => {
+    setSelectedSection(section)
   }
 
   return (
@@ -39,8 +55,16 @@ const TextbookTable = () => {
         <Column>
           <StyledHeading>대단원</StyledHeading>
           <StyledUl>
-            {TextbookData.map((unit) => (
-              <StyledLi key={unit.id} onClick={() => handleUnitClick(unit)}>
+            {TextbookData.map((unit, index) => (
+              <StyledLi
+                key={unit.id}
+                onClick={() => {
+                  setSelectedUnitId(index)
+                  handleUnitClick(unit)
+                  //TODO: api 요청 로직 추가
+                }}
+                isClicked={selectedUnitId === index}
+              >
                 {unit.title}
               </StyledLi>
             ))}
@@ -52,17 +76,22 @@ const TextbookTable = () => {
           <StyledHeading>중단원</StyledHeading>
           {selectedUnit ? (
             <StyledUl>
-              {selectedUnit.chapters.map((chapter) => (
+              {selectedUnit.chapters.map((chapter, index) => (
                 <StyledLi
                   key={chapter.id}
-                  onClick={() => handleChapterClick(chapter)}
+                  onClick={() => {
+                    setSelectedChapterId(index)
+                    handleChapterClick(chapter)
+                    //TODO: api 요청 로직 추가
+                  }}
+                  isClicked={selectedChapterId === index}
                 >
                   {chapter.title}
                 </StyledLi>
               ))}
             </StyledUl>
           ) : (
-            <p style={{color: '#666666'}}>대단원을 선택해 주세요.</p>
+            <p style={{ color: '#666666' }}>대단원을 선택해 주세요.</p>
           )}
         </Column>
 
@@ -71,12 +100,22 @@ const TextbookTable = () => {
           <StyledHeading>소단원</StyledHeading>
           {selectedChapter ? (
             <StyledUl>
-              {selectedChapter.sections.map((section) => (
-                <StyledLi key={section.id}>{section.title}</StyledLi>
+              {selectedChapter.sections.map((section, index) => (
+                <StyledLi
+                  key={section.id}
+                  onClick={() => {
+                    setSelectedSectionId(index)
+                    handleSectionClick(section)
+                    //TODO: api 요청 로직 추가
+                  }}
+                  isClicked={selectedSectionId === index}
+                >
+                  {section.title}
+                </StyledLi>
               ))}
             </StyledUl>
           ) : (
-            <p style={{color: '#666666'}}>중단원을 선택해 주세요.</p>
+            <p style={{ color: '#666666' }}>중단원을 선택해 주세요.</p>
           )}
         </Column>
       </TableContainer>
@@ -87,12 +126,16 @@ const TextbookTable = () => {
 export default TextbookTable
 
 /* Styled Components */
-const StyledLi = styled.li`
+const StyledLi = styled.li<{ isClicked: boolean }>`
   padding-bottom: 10px;
-  color: #666666;
   transition: all 0.3s ease;
+  font-weight: ${({ isClicked }) => (isClicked ? 'bold' : 'normal')};
+  color: ${({ isClicked }) => (isClicked ? '#4049F4' : '#666666')};
+
+  // hover 스타일 적용
   &:hover {
     font-weight: bold;
+    color: #4049f4;
   }
 `
 

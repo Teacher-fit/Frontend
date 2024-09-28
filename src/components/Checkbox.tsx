@@ -68,7 +68,7 @@ const Checkmark = styled.span<{ checked: boolean }>`
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     position: absolute;
-    left: 8px;
+    left: 7px;
     top: 4px;
   }
 `
