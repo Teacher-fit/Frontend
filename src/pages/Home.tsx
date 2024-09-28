@@ -14,6 +14,22 @@ const Home = () => {
   const [edutech, setEdutech] = useState(false)
   const [activeButton, setActiveButton] = useState<string>('home')
 
+  // 하나의 선택된 카테고리 인덱스를 관리하기 위한 상태
+  const [selectedSchool, setSelectedSchool] = useState<number | null>(null)
+
+  // SchoolCategory 클릭 시 상태 업데이트
+  const handleSchoolClick = (index: number) => {
+    setSelectedSchool(index)
+  }
+
+  // FilterCategory를 Label 그룹별로 관리
+  const [selectedGrade, setSelectedGrade] = useState<number | null>(null)
+  const [selectedArea, setSelectedArea] = useState<number | null>(null)
+  const [selectedSubject, setSelectedSubject] = useState<number | null>(null)
+  const [selectedPublisher, setSelectedPublisher] = useState<number | null>(
+    null
+  )
+
   // 버튼 클릭 시 active 상태 변경
   const handleButtonClick = (buttonName: string) => {
     setActiveButton(buttonName)
@@ -37,30 +53,97 @@ const Home = () => {
         </S.MenuCategory>
       </S.Menu>
       <S.SchoolMenu>
-        <S.SchoolCategory>초등학교</S.SchoolCategory>
-        <S.SchoolCategory>중학교</S.SchoolCategory>
-        <S.SchoolCategory>고등학교</S.SchoolCategory>
+        <S.SchoolCategory
+          isActive1={selectedSchool === 0}
+          onClick={() => handleSchoolClick(0)}
+          style={{
+            backgroundColor: selectedSchool === 0 ? '#6E75F5' : '#ffffff',
+          }}
+        >
+          초등학교
+        </S.SchoolCategory>
+
+        <S.SchoolCategory
+          isActive1={selectedSchool === 1}
+          onClick={() => handleSchoolClick(1)}
+          style={{
+            backgroundColor: selectedSchool === 1 ? '#6E75F5' : '#ffffff',
+          }}
+        >
+          중학교
+        </S.SchoolCategory>
+
+        <S.SchoolCategory
+          isActive1={selectedSchool === 2}
+          onClick={() => handleSchoolClick(2)}
+          style={{
+            backgroundColor: selectedSchool === 2 ? '#6E75F5' : '#ffffff',
+          }}
+        >
+          고등학교
+        </S.SchoolCategory>
       </S.SchoolMenu>
+
       <S.SearchBox>
         <S.FilterMenu>
           <S.Label>학년 선택</S.Label>
-          <S.FilterCategory>중1</S.FilterCategory>
-          <S.FilterCategory>중2</S.FilterCategory>
-          <S.FilterCategory>중3</S.FilterCategory>
+          {['중1', '중2', '중3'].map((grade, index) => (
+            <S.FilterCategory
+              key={index}
+              onClick={() => setSelectedGrade(index)}
+              isActive2={selectedGrade === index}
+              style={{
+                backgroundColor:
+                  selectedGrade === index ? '#6E75F5' : '#ffffff',
+              }}
+            >
+              {grade}
+            </S.FilterCategory>
+          ))}
         </S.FilterMenu>
         <S.FilterMenu>
           <S.Label>영역 선택</S.Label>
-          <S.FilterCategory>도덕</S.FilterCategory>
+          <S.FilterCategory
+            onClick={() => setSelectedArea(0)}
+            isActive2={selectedArea === 0}
+            style={{
+              backgroundColor: selectedArea === 0 ? '#6E75F5' : '#ffffff',
+            }}
+          >
+            도덕
+          </S.FilterCategory>
         </S.FilterMenu>
         <S.FilterMenu>
           <S.Label>과목 선택</S.Label>
-          <S.FilterCategory>도덕①</S.FilterCategory>
-          <S.FilterCategory>도덕②</S.FilterCategory>
+          {['도덕①', '도덕②'].map((subject, index) => (
+            <S.FilterCategory
+              key={index}
+              onClick={() => setSelectedSubject(index)}
+              isActive2={selectedSubject === index}
+              style={{
+                backgroundColor:
+                  selectedSubject === index ? '#6E75F5' : '#ffffff',
+              }}
+            >
+              {subject}
+            </S.FilterCategory>
+          ))}
         </S.FilterMenu>
         <S.FilterMenu>
           <S.Label>출판사 선택</S.Label>
-          <S.FilterCategory>미래엔</S.FilterCategory>
-          <S.FilterCategory>천재</S.FilterCategory>
+          {['미래엔', '천재'].map((publisher, index) => (
+            <S.FilterCategory
+              key={index}
+              onClick={() => setSelectedPublisher(index)}
+              isActive2={selectedPublisher === index}
+              style={{
+                backgroundColor:
+                  selectedPublisher === index ? '#6E75F5' : '#ffffff',
+              }}
+            >
+              {publisher}
+            </S.FilterCategory>
+          ))}
         </S.FilterMenu>
       </S.SearchBox>
       <S.Heading>단원 선택</S.Heading>
