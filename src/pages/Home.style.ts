@@ -20,7 +20,7 @@ export const Menu = styled.div`
   margin: 0; 
   margin-bottom: 100px;
   margin-top: 50px;
-  width: 30%;
+  width: 35%;
   font-size: 16px;
 
   /* Style */
@@ -29,13 +29,6 @@ export const Menu = styled.div`
   opacity: var(--sds-size-stroke-border);
   background: #F7F7FF;
 `;
-
-/*
-export const Fit = styled.span`
-  color: #4049f4;
-  font-weight: bold;
-`;
-*/
 
 export const MenuCategory = styled.button<{ isActive: boolean }>`
   flex-grow: 1; /* 각 버튼이 동일한 너비를 가짐 */
@@ -176,23 +169,6 @@ export const Li = styled.li`
   margin-top: 15px;
 `;
 
-export const InputBox = styled.input`
-  width: 100%;
-  height: 130px;
-  border-radius: 8px;
-  background-color: #F7F7FF;
-  border: solid #D3D5FF;
-  padding: 16px;
-  font-size: 18px;
-
-  &::placeholder {
-    position: relative;
-    top: -50px;  /* placeholder 텍스트를 위로 이동 */
-    line-height: 1.2; /* 줄 간격 조절 */
-    color: #B3B3B3;
-  }
-`;
-
 export const Detail = styled.p`
   background-color: white;
   border: none;
@@ -213,6 +189,8 @@ export const SubmitBtn = styled.button`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
+  border-radius: 8px;
+  padding: 10px;
 
   &:focus {
     outline: none; 
