@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './GlobalStyle'
 import Header from '../src/components/Header'
 import Footer from '../src/components/Footer'
-import MyFit from '../src/pages/MyFit'
+import MyFit from './pages/MyFitPage'
 import Home from '../src/pages/Home';
 
 const App: React.FC = () => {

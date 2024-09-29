@@ -151,7 +151,7 @@ const Home = () => {
       </Checkbox>
       <S.Detail>세부 내용</S.Detail> {/* 세부 내용 페이지 확인하기 */}
       <S.BtnContainer>
-        <S.SubmitBtn as={Link} to="/MyFit">
+        <S.SubmitBtn as={Link} to="/myfit">
           활동 생성하기
         </S.SubmitBtn>
       </S.BtnContainer>

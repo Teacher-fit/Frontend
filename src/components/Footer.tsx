@@ -1,4 +1,3 @@
-import React from 'react'
 import * as S from './Footer.style'
 
 import FooterLogo from '../assets/FooterLogo.svg'
