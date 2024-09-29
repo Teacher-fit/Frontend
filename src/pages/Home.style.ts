@@ -176,23 +176,6 @@ export const Li = styled.li`
   margin-top: 15px;
 `;
 
-export const InputBox = styled.input`
-  width: 100%;
-  height: 130px;
-  border-radius: 8px;
-  background-color: #F7F7FF;
-  border: solid #D3D5FF;
-  padding: 16px;
-  font-size: 18px;
-
-  &::placeholder {
-    position: relative;
-    top: -50px;  /* placeholder 텍스트를 위로 이동 */
-    line-height: 1.2; /* 줄 간격 조절 */
-    color: #B3B3B3;
-  }
-`;
-
 export const Detail = styled.p`
   background-color: white;
   border: none;
@@ -213,6 +196,8 @@ export const SubmitBtn = styled.button`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
+  border-radius: 8px;
+  padding: 10px;
 
   &:focus {
     outline: none; 

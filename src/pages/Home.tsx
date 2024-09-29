@@ -1,16 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import * as S from './Home.style'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+//import Footer from '../components/Footer'
 import SearchBox from '../components/SearchBox'
 import Checkbox from '../components/Checkbox'
 import TextbookTable from '../components/TextbookTable'
+import { Link } from 'react-router-dom'
+import AutoResizeInputBox from '../components/AutoResizeInputBox'
 
 const Home = () => {
-  useEffect(() => {
-    document.title = 'TeacherFit'
-  }, [])
-
   const [edutech, setEdutech] = useState(false)
   const [activeButton, setActiveButton] = useState<string>('home')
 
@@ -37,7 +34,6 @@ const Home = () => {
 
   return (
     <S.Root>
-      <Header />
       <S.Menu>
         <S.MenuCategory
           isActive={activeButton === 'home'}
@@ -149,15 +145,16 @@ const Home = () => {
       <S.Heading>
         나만의<S.Fit> fit</S.Fit>
       </S.Heading>
-      <S.InputBox placeholder="수업 설계에 필요한 추가 요청사항이 있다면 여기에 작성해 주세요." />
+      <AutoResizeInputBox placeholder="수업 설계에 필요한 추가 요청사항이 있다면 여기에 작성해 주세요." />
       <Checkbox checked={edutech} onChange={setEdutech}>
         에듀테크 도구 활용 여부
       </Checkbox>
       <S.Detail>세부 내용</S.Detail> {/* 세부 내용 페이지 확인하기 */}
       <S.BtnContainer>
-        <S.SubmitBtn>활동 생성하기</S.SubmitBtn>
+        <S.SubmitBtn as={Link} to="/MyFit">
+          활동 생성하기
+        </S.SubmitBtn>
       </S.BtnContainer>
-      <Footer />
     </S.Root>
   )
 }
