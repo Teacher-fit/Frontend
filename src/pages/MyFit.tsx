@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import * as S from './Home.style'
+import * as S from './Myfit.style'
 import { Link } from 'react-router-dom'
 import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
@@ -19,7 +19,7 @@ interface RequestData {
 }
 
 // Home 컴포넌트 정의
-const Home = () => {
+const MyFit = () => {
   const [isComplete, setIsComplete] = useState(false) // TextbookTable에서 받는 완료 상태
   const [selectedIds, setSelectedIds] = useState<number[]>([]) // 선택된 ID 배열
 
@@ -234,4 +234,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default MyFit

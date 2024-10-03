@@ -4,12 +4,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './GlobalStyle'
 import Header from '../src/components/Header'
 import Footer from '../src/components/Footer'
-import MyFit from './pages/MyFitPage'
-import Home from '../src/pages/Home';
+import MyFitResult from './pages/MyFitResult'
+import MyFit from './pages/MyFit';
+import Landing from './pages/Landing';
 
 const App: React.FC = () => {
   useEffect(() => {
-    document.title = 'TeacherFit'
+    document.title = 'TeacherFit' 
   }, [])
 
   return (
@@ -18,8 +19,9 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Header></Header>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/myfit" element={<MyFit />}></Route>
+          <Route path="/landing" element={<Landing/>}></Route>
+          <Route path="/myfit" element={<MyFit/>}></Route>
+          <Route path="/result" element={<MyFitResult />}></Route>
         </Routes>
       </BrowserRouter>
       <Footer></Footer>
