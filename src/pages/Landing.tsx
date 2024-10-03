@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 
 import img1 from '../assets/landing1.png'
 import img2 from '../assets/landing3.png'
+import Menu from '../components/Menu'
 
 const Landing = () => {
   return (
     <>
       <Root>
+        <Menu />
         <Img src={img1} />
         <Img src={img2} />
         <Btn as={Link} to="/myfit">
@@ -26,7 +28,6 @@ export const Root = styled.div`
   flex-direction: column; /* Column으로 쌓이도록 설정 */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   max-width: 100%;
 `
 

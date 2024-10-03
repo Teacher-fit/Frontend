@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  #root {
+    margin: 0;
+    padding: 0;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -12,8 +17,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    padding: 0;
     background-color: #ffffff; 
     color: #000000; 
+  }
+
+  div {
+    padding: 0;
+    margin: 0;
   }
 
   button {

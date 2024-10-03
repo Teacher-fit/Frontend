@@ -4,6 +4,7 @@ import * as S from './Myfit.style'
 import { Link } from 'react-router-dom'
 import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
+import Menu from '../components/Menu'
 
 // 서버 URL 상수
 const SERVER_URL =
@@ -29,8 +30,6 @@ const MyFit = () => {
     setSelectedIds(ids)
   }
 
-  const [activeButton, setActiveButton] = useState<string>('home')
-
   // 선택된 학교 상태 관리
   const [selectedSchool, setSelectedSchool] = useState<number | null>(null)
 
@@ -55,11 +54,6 @@ const MyFit = () => {
     setSelectedSchool(index)
   }
 
-  // 버튼 클릭 시 active 상태 변경
-  const handleButtonClick = (buttonName: string) => {
-    setActiveButton(buttonName)
-  }
-
   // 필터 메뉴에서 선택한 데이터를 저장하는 함수
   const handleFilterChange = (key: keyof RequestData, value: number | null) => {
     setRequestData((prevData) => ({
@@ -78,8 +72,8 @@ const MyFit = () => {
 
   // AutoResizeInputBox의 onChange 핸들러를 수정합니다.
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    handleInputChange(e.target.value);
-  };
+    handleInputChange(e.target.value)
+  }
 
   // POST 요청 보내는 함수
   const submitData = async () => {
@@ -94,21 +88,7 @@ const MyFit = () => {
 
   return (
     <S.Root>
-      <S.Menu>
-        <S.MenuCategory
-          isActive={activeButton === 'home'}
-          onClick={() => handleButtonClick('home')}
-        >
-          HOME
-        </S.MenuCategory>
-        <S.MenuCategory
-          isActive={activeButton === 'fit'}
-          onClick={() => handleButtonClick('fit')}
-        >
-          나만의 <S.Fit>Fit</S.Fit> 찾기
-        </S.MenuCategory>
-      </S.Menu>
-
+      <Menu/>
       <S.SchoolMenu>
         <S.SchoolCategory
           isActive1={false}
@@ -213,7 +193,7 @@ const MyFit = () => {
 
       <AutoResizeInputBox
         placeholder="수업 설계에 필요한 추가 요청사항이 있다면 여기에 작성해 주세요."
-        onChange={handleTextareaChange} 
+        onChange={handleTextareaChange}
       />
 
       <S.BtnContainer>

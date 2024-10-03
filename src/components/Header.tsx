@@ -6,7 +6,8 @@ import logo from '../assets/LogoTitle.svg'
 
 const Header = () => {
   return (
-    <S.Header>
+    <S.Header style={{marginLeft: '0px',
+      marginRight: '0px'}} >
       <S.DivContents>
         <S.DivLogoZone>
           <Link to="/">
