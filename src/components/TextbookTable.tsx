@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState} from 'react'
 import styled from 'styled-components'
 import { TextbookData } from '../mock/TextbookData'
 
@@ -19,12 +19,13 @@ interface Section {
   title: string
 }
 
-const TextbookTable = () => {
-  // Unit >> Chapter >> Section
-  const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null)
-  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null)
-  const [selectedSection, setSelectedSection] = useState<Section | null>(null)
+interface TextbookTableProps {
+  onCompletionStatusChange: (complete: boolean, selectedIds: number[]) => void
+}
 
+const TextbookTable: React.FC<TextbookTableProps> = ({
+  onCompletionStatusChange,
+}) => {
   const [selectedUnitId, setSelectedUnitId] = useState<number | null>(null)
   const [selectedChapterId, setSelectedChapterId] = useState<number | null>(
     null
@@ -33,19 +34,18 @@ const TextbookTable = () => {
     null
   )
 
-  const handleUnitClick = (unit: Unit) => {
-    setSelectedUnit(unit)
-    setSelectedChapter(null) // 대단원을 새로 선택할 때 기선택했던 중단원 초기화
-    setSelectedChapterId(null) // 대단원을 새로 선택할 때 기선택했던 중단원 ID 초기화
-  }
+  const handleSelection = (
+    unitId: number | null,
+    chapterId: number | null,
+    sectionId: number | null
+  ) => {
+    const selectedIds = [unitId, chapterId, sectionId].filter(
+      (id) => id !== null
+    ) as number[]
+    const isComplete = selectedIds.length === 3 // All 3 IDs selected means complete
 
-  const handleChapterClick = (chapter: Chapter) => {
-    setSelectedChapter(chapter)
-    setSelectedSectionId(null) // 중단원을 새로 선택할 기선택했던 소단원 ID 초기화
-  }
-
-  const handleSectionClick = (section: Section) => {
-    setSelectedSection(section)
+    // Send data to parent component (Home.tsx)
+    onCompletionStatusChange(isComplete, selectedIds)
   }
 
   return (
@@ -60,8 +60,8 @@ const TextbookTable = () => {
                 key={unit.id}
                 onClick={() => {
                   setSelectedUnitId(index)
-                  handleUnitClick(unit)
-                  //TODO: api 요청 로직 추가
+                  setSelectedChapterId(null) // Reset chapter and section when unit changes
+                  setSelectedSectionId(null)
                 }}
                 isClicked={selectedUnitId === index}
               >
@@ -74,15 +74,14 @@ const TextbookTable = () => {
         {/* 중단원 */}
         <Column>
           <StyledHeading>중단원</StyledHeading>
-          {selectedUnit ? (
+          {selectedUnitId !== null ? (
             <StyledUl>
-              {selectedUnit.chapters.map((chapter, index) => (
+              {TextbookData[selectedUnitId].chapters.map((chapter, index) => (
                 <StyledLi
                   key={chapter.id}
                   onClick={() => {
                     setSelectedChapterId(index)
-                    handleChapterClick(chapter)
-                    //TODO: api 요청 로직 추가
+                    setSelectedSectionId(null) // Reset section when chapter changes
                   }}
                   isClicked={selectedChapterId === index}
                 >
@@ -98,15 +97,16 @@ const TextbookTable = () => {
         {/* 소단원 */}
         <Column>
           <StyledHeading>소단원</StyledHeading>
-          {selectedChapter ? (
+          {selectedChapterId !== null ? (
             <StyledUl>
-              {selectedChapter.sections.map((section, index) => (
+              {TextbookData[selectedUnitId!].chapters[
+                selectedChapterId
+              ].sections.map((section, index) => (
                 <StyledLi
                   key={section.id}
                   onClick={() => {
                     setSelectedSectionId(index)
-                    handleSectionClick(section)
-                    //TODO: api 요청 로직 추가
+                    handleSelection(selectedUnitId, selectedChapterId, index) // Pass the selected data
                   }}
                   isClicked={selectedSectionId === index}
                 >
