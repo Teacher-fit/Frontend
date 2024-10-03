@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, ChangeEvent } from 'react'
 import styled from 'styled-components'
 
 type AutoResizeInputBoxProps = {
   placeholder?: string
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void // onChange 추가
 }
 
 export const InputBox = styled.textarea`
@@ -17,6 +18,7 @@ export const InputBox = styled.textarea`
   resize: none;
   overflow: hidden;
   border: 0;
+  color: #666666;
 
   &::placeholder {
     color: #b3b3b3;
@@ -25,6 +27,7 @@ export const InputBox = styled.textarea`
 
 const AutoResizeInputBox: React.FC<AutoResizeInputBoxProps> = ({
   placeholder,
+  onChange, // onChange prop 받기
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
@@ -46,7 +49,13 @@ const AutoResizeInputBox: React.FC<AutoResizeInputBoxProps> = ({
     }
   }, [])
 
-  return <InputBox ref={textareaRef} placeholder={placeholder} />
+  return (
+    <InputBox
+      ref={textareaRef}
+      placeholder={placeholder}
+      onChange={onChange} 
+    />
+  )
 }
 
 export default AutoResizeInputBox

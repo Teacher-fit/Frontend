@@ -7,7 +7,7 @@ export const Root = styled.div`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  max-width: 3000px;  
+  max-width: 1000px;  
 `
 
 export const Menu = styled.div`
@@ -169,7 +169,7 @@ export const Li = styled.li`
   margin-top: 15px;
 `;
 
-export const Detail = styled.p`
+export const Detail = styled.div` // or p
   background-color: white;
   border: none;
   margin-left: 45px;
@@ -205,4 +205,5 @@ export const BtnContainer = styled.div`
   align-items: center; /* 수직 중앙 정렬 */
   width: 100%;
   height: 100%;
+  margin-top: 58px;
 `;
