@@ -1,72 +1,158 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import img1 from '../assets/landing1.png'
-import img2 from '../assets/landing3.png'
-import Menu from '../components/Menu'
+import img2 from '../assets/landing2.png'
+import img3 from '../assets/landing3.png'
+import img4 from '../assets/landing4.png'
+import img5 from '../assets/landing5.png'
+import lastgra from '../assets/LandingLastGra.svg'
 
-const Landing = () => {
-  return (
-    <>
-      <Root>
-        <Menu />
-        <Img src={img1} />
-        <Img src={img2} />
-        <Btn as={Link} to="/myfit">
-          <div>지금 티쳐핏 만나러 가기</div>
-        </Btn>
-      </Root>
-    </>
-  )
-}
-
-export default Landing
-
-export const Root = styled.div`
-  min-height: 80vh; /* Viewport Height, 화면 전체 높이 */
-  display: flex;
-  flex-direction: column; /* Column으로 쌓이도록 설정 */
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
+// 그라데이션 이동 애니메이션 정의
+const gradientMove = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 `
 
+// 글리터 이동 애니메이션 정의
+const glitterMove = keyframes`
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(-10px); /* 중간에 좌우 움직임 */
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) translateX(10px); /* 아래로 내려가며 좌우 흔들림 */
+    opacity: 0;
+  }
+`
+
+// 글리터의 반짝임 애니메이션 정의
+const glitterTwinkle = keyframes`
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4; /* 중간에 더 투명해졌다가 다시 밝아짐 */
+  }
+`
+
+// 원형 글리터 요소
+const Glitter = styled.div`
+  position: absolute;
+  width: 4px; /* 원의 크기 */
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8); /* 흰색 반짝임 */
+  border-radius: 50%; /* 동그라미 모양 */
+  box-shadow: 0px 0px 6px 2px rgba(255, 255, 255, 0.5); /* 그림자 효과로 더 빛나게 */
+  animation:
+    ${glitterMove} 20s linear infinite,
+    /* 20초 동안 천천히 내려오는 애니메이션 */ ${glitterTwinkle} 2.5s
+      ease-in-out infinite; /* 반짝이는 효과를 위한 애니메이션 */
+`
+
+// 여러 개의 글리터 생성
+const generateGlitters = () => {
+  const glitters = []
+  for (let i = 0; i < 50; i++) {
+    const size = Math.random() * 4 + 2 // 원의 크기를 랜덤으로 설정 (최소 2px, 최대 6px)
+    const horizontalMovement = Math.random() * 20 - 10 // 좌우 움직임 범위 (-10px ~ 10px)
+    glitters.push(
+      <Glitter
+        key={i}
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * -100}vh`,
+          width: `${size}px`, // 랜덤 크기
+          height: `${size}px`, // 랜덤 크기
+          animationDuration: `${Math.random() * 20 + 15}s`, // 15초에서 35초까지 천천히 내려옴
+          animationDelay: `${Math.random() * 5}s`,
+          // 좌우 흔들림 범위 적용
+          transform: `translateX(${horizontalMovement}px)`,
+        }}
+      />
+    )
+  }
+  return glitters
+}
+
+// Root 컴포넌트
+export const Root = styled.div`
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+`
+
+// 이미지 스타일
 export const Img = styled.img`
   padding: 0;
   margin: 0;
   width: 100%;
+  height: auto;
+  object-fit: cover;
 `
 
+// 버튼 스타일 (필요에 따라 수정 가능)
 export const Btn = styled.button`
   width: 20%;
-  background: linear-gradient(0deg, #2de19a 0%, #1cf59f 100%);
-  color: #4049f4;
+  background: linear-gradient(92deg, #868df6, #4049f4);
+  background-size: 300% 300%;
+  color: #ffffff;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.1rem;
   text-align: center;
   border-radius: 1000px;
-  padding: 10px;
+  padding: 15px 12px;
   white-space: nowrap;
   position: fixed;
   display: flex;
   align-items: center;
   left: 50%;
-  bottom: 50px;
+  bottom: 80px;
   transform: translateX(-50%);
   cursor: pointer;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+  animation: ${gradientMove} 8s linear infinite;
 
   &:focus {
     outline: none;
     border: none;
   }
 `
-export const BtnContainer = styled.div`
-  display: fix;
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  width: 100%;
-  height: 100%;
-  text-align: center;
-`
+
+// Landing 페이지 컴포넌트
+const Landing = () => {
+  return (
+    <Root>
+      {/* 글리터 렌더링 */}
+      {generateGlitters()}
+      <Img src={img1} />
+      <Img src={img2} />
+      <Img src={img3} />
+      <Img src={img4} />
+      <Img src={img5} />
+      <Img src={lastgra} />
+      <Btn as={Link} to="/myfit">
+        <div>지금 티쳐핏 만나러 가기</div>
+      </Btn>
+    </Root>
+  )
+}
+
+export default Landing

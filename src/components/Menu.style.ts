@@ -1,24 +1,22 @@
 import styled from 'styled-components'
 
 export const Menu = styled.div`
-  /* layout */
-  display: flex;  /* inline-flex를 flex로 변경 */
+  display: flex;
   padding: 6px;
   align-items: flex-start;
-  text-align: center;
   gap: 6px;
-  margin: 0; 
   margin-bottom: 100px;
   margin-top: 50px;
   width: 35%;
+  max-width: 1100px; /* 메뉴의 최대 너비 */
   font-size: 16px;
 
-  /* Style */
   border-radius: 8px;
   border: var(--sds-size-stroke-border) solid #D3D5FF;
   opacity: var(--sds-size-stroke-border);
   background: #F7F7FF;
 `;
+
 
 export const MenuCategory = styled.button<{ isActive: boolean }>`
   flex-grow: 1; /* 각 버튼이 동일한 너비를 가짐 */

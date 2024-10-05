@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
 import Menu from '../components/Menu'
+import Header from '../components/Header'
 
 // 서버 URL 상수
 const SERVER_URL =
@@ -88,7 +89,8 @@ const MyFit = () => {
 
   return (
     <S.Root>
-      <Menu/>
+      <Header />
+      <Menu />
       <S.SchoolMenu>
         <S.SchoolCategory
           isActive1={false}

@@ -1,7 +1,7 @@
 import * as S from './Menu.style'
 import { Link } from 'react-router-dom'
 
-const ScrollToTop = () => {
+const Menu = () => {
   return (
     <S.Menu>
       <S.MenuCategory isActive={true} as={Link} to="/landing">
@@ -14,4 +14,4 @@ const ScrollToTop = () => {
   )
 }
 
-export default ScrollToTop
+export default Menu
