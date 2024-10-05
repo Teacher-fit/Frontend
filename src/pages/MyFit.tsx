@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import * as S from './Myfit.style'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
 import Menu from '../components/Menu'
@@ -14,14 +14,9 @@ const SERVER_URL =
 // requestData의 타입 정의
 interface RequestData {
   grade: number | null
-  //area: number | null
-  //subject: number | null
-  //publisher: number | null
-
   main_chapter: number
   sub_chapter: number
   small_chapter: number
-
   requirement: string
   use_edutech_tool: true
 }
@@ -30,19 +25,24 @@ interface RequestData {
 const MyFit = () => {
   const [isComplete, setIsComplete] = useState(false) // TextbookTable에서 받는 완료 상태
   const [selectedIds, setSelectedIds] = useState<number[]>([]) // 선택된 ID 배열 -> TextbookTable 단원 배열?
+  const [responseData, setResponseData] = useState(null) // 서버 응답 상태 추가
+  const navigate = useNavigate() // 페이지 이동을 위한 훅
 
   // 선택된 학교 상태 관리
   const [selectedSchool, setSelectedSchool] = useState<number | null>(null)
 
-  // 클릭 상태 확인 
-  const [clicked1, setClicked1] = useState(false) // 영역 -> 도덕
-  const [clicked2, setClicked2] = useState(false) // 과목 선택 -> 도덕1
-  const [clicked3, setClicked3] = useState(false) // 출판사 선택 -> 천재
+  // 클릭 상태 확인
+  const [clicked1, setClicked1] = useState(false) // 영역 -> '도덕' 선택을 위함
+  const [clicked2, setClicked2] = useState(false) // 과목 선택 -> '도덕1' 선택을 위함
+  const [clicked3, setClicked3] = useState(false) // 출판사 선택 -> '천재' 선택을 위함
 
   // TextbookTable에서 선택 완료 상태를 업데이트하는 함수
   const handleCompletionStatusChange = (complete: boolean, ids: number[]) => {
     setIsComplete(complete)
     setSelectedIds(ids)
+    handleFilterChange('main_chapter', ids[0])
+    handleFilterChange('sub_chapter', ids[1])
+    handleFilterChange('small_chapter', ids[2])
   }
 
   // 필터 및 입력 데이터를 저장할 상태 정의
@@ -82,10 +82,11 @@ const MyFit = () => {
 
   // POST 요청 보내는 함수
   const submitData = async () => {
-    console.log(requestData) // 서버로 보낼 데이터 확인
     try {
       const response = await axios.post(SERVER_URL, requestData)
       console.log('서버 응답:', response.data)
+      setResponseData(response.data) // 응답 데이터 저장
+      navigate('/result', { state: { content: response.data.content } }) // 응답 데이터와 함께 이동
     } catch (error) {
       console.error('데이터 전송 실패:', error)
     }
@@ -125,11 +126,15 @@ const MyFit = () => {
           {['중1', '중2', '중3'].map((grade, index) => (
             <S.FilterCategory
               key={index}
-              onClick={() => handleFilterChange('grade', index)}
-              isActive2={requestData.grade === index}
+              onClick={() => handleFilterChange('grade', index + 1)}
+              isActive2={
+                requestData.grade !== null && requestData.grade - 1 === index
+              }
               style={{
                 backgroundColor:
-                  requestData.grade === index ? '#6E75F5' : '#ffffff',
+                  requestData.grade !== null && requestData.grade - 1 === index
+                    ? '#6E75F5'
+                    : '#ffffff',
               }}
             >
               {grade}
@@ -204,14 +209,13 @@ const MyFit = () => {
 
       <S.BtnContainer>
         <S.SubmitBtn
-          as={Link}
-          to="/myfit"
+          as="button"
           onClick={submitData}
           style={{
             color: isComplete ? '#fefefe' : '#666666',
             backgroundColor: isComplete ? '#4049F4' : '#cccccc',
           }}
-          disabled={!isComplete} // isComplete 상태에 따라 버튼 비활성화
+          disabled={!isComplete}
         >
           활동 생성하기
         </S.SubmitBtn>

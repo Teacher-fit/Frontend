@@ -59,7 +59,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
               <StyledLi
                 key={unit.id}
                 onClick={() => {
-                  setSelectedUnitId(index)
+                  setSelectedUnitId(index+1)
                   setSelectedChapterId(null) // Reset chapter and section when unit changes
                   setSelectedSectionId(null)
                 }}
@@ -80,7 +80,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                 <StyledLi
                   key={chapter.id}
                   onClick={() => {
-                    setSelectedChapterId(index)
+                    setSelectedChapterId(index+1)
                     setSelectedSectionId(null) // Reset section when chapter changes
                   }}
                   isClicked={selectedChapterId === index}
@@ -105,7 +105,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                 <StyledLi
                   key={section.id}
                   onClick={() => {
-                    setSelectedSectionId(index)
+                    setSelectedSectionId(index+1)
                     handleSelection(selectedUnitId, selectedChapterId, index) // Pass the selected data
                   }}
                   isClicked={selectedSectionId === index}
