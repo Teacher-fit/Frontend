@@ -24,7 +24,7 @@ const SERVER_URL =
   }, [])
 */
 
-const MyFitPage = () => {
+const MyFitResult = () => {
   const [activeButton, setActiveButton] = useState<string>('home')
 
   // 버튼 클릭 시 active 상태 변경
@@ -76,7 +76,7 @@ const MyFitPage = () => {
   )
 }
 
-export default MyFitPage
+export default MyFitResult
 
 // styled-component
 export const Root = styled.div`
