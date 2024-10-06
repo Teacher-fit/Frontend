@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import Header from '../components/Header'
@@ -14,7 +15,7 @@ const MyFitResult = () => {
   const location = useLocation()
   const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
   //const ansString = JSON.stringify(content);
-  const ansString = content;
+  const ansString = content
   const [activeButton, setActiveButton] = useState<string>('home')
 
   // 버튼 클릭 시 active 상태 변경
@@ -22,9 +23,12 @@ const MyFitResult = () => {
     setActiveButton(buttonName)
   }
 
+  const markdownMock =
+    '### tabletest \n| 왼쪽 | 가운데 | 오른쪽 |\n| :--------: | :--------: | :--------: |\n| 테이블 | 구분기호 | 사용 || 내용 설명 | 마크다운 | 정렬 || 문법 | 외우세요 | 사용방법 |'
+
   return (
     <Root>
-      <Header/>
+      <Header />
       <Menu>
         <MenuCategory
           isActive={activeButton === 'home'}
@@ -44,7 +48,10 @@ const MyFitResult = () => {
           <img src={ChatLogo} />
         </AnswerInfo>
         <MarkdownWrapper>
-          <ReactMarkdown>{ansString}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{ansString}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {markdownMock}
+          </ReactMarkdown>
         </MarkdownWrapper>
         <IconWrapper>
           <Icon src={ReloadIcon} />
@@ -152,6 +159,45 @@ export const AnswerInfo = styled.div`
 export const MarkdownWrapper = styled.div`
   margin-top: 30px;
   margin-left: 30px;
+  margin-right: 30px;
+
+  /* 표 테두리 스타일 추가 */
+  export const MarkdownWrapper = styled.div
+  margin-top: 30px;
+  margin-left: 30px;
+
+  /* Heading 태그 앞에 마진 추가 */
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em; /* 각 단락이 Heading으로 구분될 수 있도록 */
+  }
+
+  /* table의 데이터 가운데 정렬 */
+  table {
+    width: 100%; /* 테이블 너비를 100%로 */
+    border-collapse: collapse;
+    text-align: center; /* 테이블 안의 데이터 가운데 정렬 */
+    margin-top: 0.4em;
+  }
+
+  th, td {
+    border: 0.5px solid lightgray;
+    padding: 8px;
+  }
+
+  /* 첫 번째 열 전체의 배경색 변경 */
+  thead {
+    background-color: #EAEAF8;
+  }
+
+  /* H2 태그의 크기를 H3 크기로 줄임 */
+  h2 {
+    font-size: 1.17em; 
+    margin-bottom: 0.1em;
+  }
+
+  li {
+    margin-left: 20px;
+  }
 `
 
 export const IconWrapper = styled.div`
