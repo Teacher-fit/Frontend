@@ -5,9 +5,9 @@ export const Root = styled.div`
   min-height: 80vh; /* Viewport Height, 화면 전체 높이 */
   display: flex;
   flex-direction: column; /* Column으로 쌓이도록 설정 */
-  margin: 0;
   padding: 0;
-  max-width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 ` 
 
 export const SchoolMenu = styled.div`

@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
-export const FooterContainer = styled.p`
+export const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: #ffffff;
   margin-top: 187px;
+  margin-bottom: 30px;
 `;
 
 export const DivContents = styled.div` 

@@ -90,7 +90,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
               ))}
             </StyledUl>
           ) : (
-            <p style={{ color: '#666666' }}>대단원을 선택해 주세요.</p>
+            <p style={{ color: '#666666', paddingLeft: '15px' }}>대단원을 선택해 주세요.</p>
           )}
         </Column>
 
@@ -115,7 +115,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
               ))}
             </StyledUl>
           ) : (
-            <p style={{ color: '#666666' }}>중단원을 선택해 주세요.</p>
+            <p style={{ color: '#666666', paddingLeft: '15px' }}>중단원을 선택해 주세요.</p>
           )}
         </Column>
       </TableContainer>
@@ -176,7 +176,7 @@ const StyledHeading = styled.h2`
   background-color: #F7F7FF;
   border: #D3D5FF solid 1px 
   border-radius: 10px;
-  padding: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 15px;
 `

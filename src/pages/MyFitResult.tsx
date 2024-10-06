@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -13,6 +13,7 @@ import CopyIcon from '../assets/CopyIcon.svg'
 
 const MyFitResult = () => {
   const location = useLocation()
+  const prevdata = useState<Object>
   const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
   //const ansString = JSON.stringify(content);
   const ansString = content
@@ -22,9 +23,6 @@ const MyFitResult = () => {
   const handleButtonClick = (buttonName: string) => {
     setActiveButton(buttonName)
   }
-
-  const markdownMock =
-    '### tabletest \n| 왼쪽 | 가운데 | 오른쪽 |\n| :--------: | :--------: | :--------: |\n| 테이블 | 구분기호 | 사용 || 내용 설명 | 마크다운 | 정렬 || 문법 | 외우세요 | 사용방법 |'
 
   return (
     <Root>
@@ -49,9 +47,6 @@ const MyFitResult = () => {
         </AnswerInfo>
         <MarkdownWrapper>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{ansString}</ReactMarkdown>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {markdownMock}
-          </ReactMarkdown>
         </MarkdownWrapper>
         <IconWrapper>
           <Icon src={ReloadIcon} />
@@ -64,7 +59,9 @@ const MyFitResult = () => {
         </IconWrapper>
       </AnswerBox>
       <BtnContainer>
-        <SubmitBtn>활동 생성하기</SubmitBtn>
+        <SubmitBtn>
+          <Link to="/myfit">돌아가기</Link>
+        </SubmitBtn>
       </BtnContainer>
     </Root>
   )
@@ -81,6 +78,8 @@ export const Root = styled.div`
   padding: 0;
   box-sizing: border-box;
   max-width: 900px;
+  max-width: 1100px;
+  margin: 0 auto;
 `
 export const Menu = styled.div`
   display: flex; /* inline-flex를 flex로 변경 */
@@ -173,14 +172,14 @@ export const MarkdownWrapper = styled.div`
 
   /* table의 데이터 가운데 정렬 */
   table {
-    width: 100%; /* 테이블 너비를 100%로 */
+    width: 100%; 
     border-collapse: collapse;
     text-align: center; /* 테이블 안의 데이터 가운데 정렬 */
     margin-top: 0.4em;
   }
 
   th, td {
-    border: 0.5px solid lightgray;
+    border: 0.3px solid lightgray;
     padding: 8px;
   }
 

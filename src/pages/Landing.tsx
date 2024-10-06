@@ -114,10 +114,10 @@ export const Btn = styled.button`
   background-size: 300% 300%;
   color: #ffffff;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: center;
   border-radius: 1000px;
-  padding: 15px 12px;
+  padding: 20px 14px;
   white-space: nowrap;
   position: fixed;
   display: flex;
