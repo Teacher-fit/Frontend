@@ -37,7 +37,10 @@ const MyFitResult = () => {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{ansString}</ReactMarkdown>
         </MarkdownWrapper>
         <IconWrapper>
-          <Icon src={ReloadIcon} />
+          <Icon
+            src={ReloadIcon}
+            // TODO: 답변 Reload 기능 구현
+          />
           <CopyToClipboard
             text={ansString}
             onCopy={() => alert('결과가 복사되었습니다.')}

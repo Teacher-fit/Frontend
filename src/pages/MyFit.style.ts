@@ -121,18 +121,6 @@ export const Li = styled.li`
   margin-top: 15px;
 `;
 
-export const Detail = styled.div` // or p
-  background-color: white;
-  border: none;
-  margin-left: 45px;
-  weight: 20%;
-  text-align: left;
-  margin-top: 0;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  color: #757575;
-`;
-
 export const SubmitBtn = styled.button`
   margin-top: 20px;
   width: 170px;
@@ -158,4 +146,16 @@ export const BtnContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 58px;
+`;
+
+export const Detail = styled.img`
+  margin: 0;
+  right: 0%;
+  align-items: baseline;
+`;
+
+export const HeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  alignItems: center;
 `;

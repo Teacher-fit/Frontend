@@ -6,6 +6,7 @@ import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
 import Menu from '../components/Menu'
 import Header from '../components/Header'
+import DetailIcon from '../assets/DetailIcon.svg'
 
 // 서버 URL 상수
 const SERVER_URL =
@@ -198,9 +199,31 @@ const MyFit = () => {
       {/* TextbookTable 컴포넌트에서 선택 완료 상태 업데이트 */}
       <TextbookTable onCompletionStatusChange={handleCompletionStatusChange} />
 
-      <S.Heading>
-        나만의<S.Fit> fit</S.Fit>
-      </S.Heading>
+      <div style={{ marginTop: '89px' }}></div>
+      <S.HeadingWrapper>
+        <S.Heading style={{ margin: '0px' }}>
+          나만의<S.Fit> fit</S.Fit>
+        </S.Heading>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <span
+            style={{
+              alignItems: 'center',
+              color: '#6E75F5',
+              fontSize: '16px',
+              marginRight: '8px',
+            }}
+          >
+            에듀테크 도구
+          </span>
+          <S.Detail src={DetailIcon} />
+        </div>
+      </S.HeadingWrapper>
+      <div style={{ marginBottom: '23px' }}></div>
 
       <AutoResizeInputBox
         placeholder="수업 설계에 필요한 추가 요청사항이 있다면 여기에 작성해 주세요."
