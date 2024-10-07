@@ -16,7 +16,7 @@ import CopyIcon from '../assets/CopyIcon.svg'
 const MyFitResult = () => {
   const [loading, setLoading] = useState(true)
   const location = useLocation()
-  const prevdata = useState<Object>
+  //const prevdata = useState<Object>
   const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
   //const ansString = JSON.stringify(content);
   const ansString = content
