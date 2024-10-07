@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { TextbookData } from '../mock/TextbookData'
 
@@ -59,9 +59,10 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
               <StyledLi
                 key={unit.id}
                 onClick={() => {
-                  setSelectedUnitId(index+1)
+                  setSelectedUnitId(index)
                   setSelectedChapterId(null) // Reset chapter and section when unit changes
                   setSelectedSectionId(null)
+                  console.log(index, selectedSectionId)
                 }}
                 isClicked={selectedUnitId === index}
               >
@@ -80,8 +81,9 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                 <StyledLi
                   key={chapter.id}
                   onClick={() => {
-                    setSelectedChapterId(index+1)
+                    setSelectedChapterId(index)
                     setSelectedSectionId(null) // Reset section when chapter changes
+                    console.log(index, selectedSectionId)
                   }}
                   isClicked={selectedChapterId === index}
                 >
@@ -90,7 +92,9 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
               ))}
             </StyledUl>
           ) : (
-            <p style={{ color: '#666666', paddingLeft: '15px' }}>대단원을 선택해 주세요.</p>
+            <p style={{ color: '#666666', textAlign: 'center' }}>
+              대단원을 선택해 주세요.
+            </p>
           )}
         </Column>
 
@@ -105,8 +109,9 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                 <StyledLi
                   key={section.id}
                   onClick={() => {
-                    setSelectedSectionId(index+1)
+                    setSelectedSectionId(index)
                     handleSelection(selectedUnitId, selectedChapterId, index) // Pass the selected data
+                    console.log(index, selectedSectionId)
                   }}
                   isClicked={selectedSectionId === index}
                 >
@@ -115,7 +120,9 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
               ))}
             </StyledUl>
           ) : (
-            <p style={{ color: '#666666', paddingLeft: '15px' }}>중단원을 선택해 주세요.</p>
+            <p style={{ color: '#666666', textAlign: 'center' }}>
+              중단원을 선택해 주세요.
+            </p>
           )}
         </Column>
       </TableContainer>
@@ -179,4 +186,5 @@ const StyledHeading = styled.h2`
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 15px;
+  text-align: center;
 `

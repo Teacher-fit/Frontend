@@ -1,12 +1,14 @@
 import axios from 'axios'
-import { useState } from 'react'
-import * as S from './Myfit.style'
+import { useState, useCallback, useEffect } from 'react'
+import * as S from './MyFit.style'
 import { useNavigate } from 'react-router-dom'
 import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
 import Menu from '../components/Menu'
 import Header from '../components/Header'
 import DetailIcon from '../assets/DetailIcon.svg'
+//import DetailModal from '../components/DetailModal'
+//import Tooltip from '../components/Tooltip'
 
 // 서버 URL 상수
 const SERVER_URL =
@@ -24,6 +26,11 @@ interface RequestData {
 
 // Home 컴포넌트 정의
 const MyFit = () => {
+  const [isOpenModal, setOpenModal] = useState<boolean>(false)
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal)
+  }, [isOpenModal])
+
   const [isComplete, setIsComplete] = useState(false) // TextbookTable에서 받는 완료 상태
   const [selectedIds, setSelectedIds] = useState<number[]>([]) // 선택된 ID 배열 -> TextbookTable 단원 배열?
   const [responseData, setResponseData] = useState(null) // 서버 응답 상태 추가
@@ -218,9 +225,22 @@ const MyFit = () => {
               marginRight: '8px',
             }}
           >
-            에듀테크 도구
+            에듀테크 도구 활용
           </span>
-          <S.Detail src={DetailIcon} />
+          {/* 
+                {isOpenModal && (
+                <DetailModal onClickToggleModal={onClickToggleModal}>
+                  
+                </DetailModal>
+              )}
+              */}
+          {/* 
+                <Tooltip message="에듀테크" direction="top">
+                <S.Detail src={DetailIcon} alt="에듀테크" />
+              </Tooltip>
+              */}
+
+          <S.Detail src={DetailIcon} onClick={onClickToggleModal} />
         </div>
       </S.HeadingWrapper>
       <div style={{ marginBottom: '23px' }}></div>

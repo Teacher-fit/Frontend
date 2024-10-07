@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
@@ -7,12 +7,14 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import Header from '../components/Header'
 import Menu from '../components/Menu'
+import Loading from '../components/Loading'
 
 import ChatLogo from '../assets/ChatLogo.svg'
 import ReloadIcon from '../assets/ReloadIcon.svg'
 import CopyIcon from '../assets/CopyIcon.svg'
 
 const MyFitResult = () => {
+  const [loading, setLoading] = useState(true)
   const location = useLocation()
   const prevdata = useState<Object>
   const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
@@ -25,36 +27,53 @@ const MyFitResult = () => {
     setActiveButton(buttonName)
   }
 
+  // 로딩 추가
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 1500) // 1.5초
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <Root>
-      <Header />
-      <Menu />
-      <AnswerBox>
-        <AnswerInfo>
-          <img src={ChatLogo} />
-        </AnswerInfo>
-        <MarkdownWrapper>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{ansString}</ReactMarkdown>
-        </MarkdownWrapper>
-        <IconWrapper>
-          <Icon
-            src={ReloadIcon}
-            // TODO: 답변 Reload 기능 구현
-          />
-          <CopyToClipboard
-            text={ansString}
-            onCopy={() => alert('결과가 복사되었습니다.')}
-          >
-            <Icon src={CopyIcon} />
-          </CopyToClipboard>
-        </IconWrapper>
-      </AnswerBox>
-      <BtnContainer>
-        <SubmitBtn>
-          <Link to="/myfit">돌아가기</Link>
-        </SubmitBtn>
-      </BtnContainer>
-    </Root>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Root>
+          <Header />
+          <Menu />
+          <AnswerBox>
+            <AnswerInfo>
+              <img src={ChatLogo} />
+            </AnswerInfo>
+            <MarkdownWrapper>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {ansString}
+              </ReactMarkdown>
+            </MarkdownWrapper>
+            <IconWrapper>
+              <Icon
+                src={ReloadIcon}
+                // TODO: 답변 Reload 기능 구현
+              />
+              <CopyToClipboard
+                text={ansString}
+                onCopy={() => alert('결과가 복사되었습니다.')}
+              >
+                <Icon src={CopyIcon} />
+              </CopyToClipboard>
+            </IconWrapper>
+          </AnswerBox>
+          <BtnContainer>
+            <SubmitBtn>
+              <Link to="/myfit">돌아가기</Link>
+            </SubmitBtn>
+          </BtnContainer>
+        </Root>
+      )}
+    </>
   )
 }
 
