@@ -10,6 +10,7 @@ export const Menu = styled.div`
   width: 35%;
   max-width: 1100px; /* 메뉴의 최대 너비 */
   font-size: 16px;
+  text-align: center;
 
   border-radius: 8px;
   border: var(--sds-size-stroke-border) solid #D3D5FF;
