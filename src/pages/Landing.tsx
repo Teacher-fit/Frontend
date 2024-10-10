@@ -1,11 +1,13 @@
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import img1 from '../assets/landing1.png'
-import img2 from '../assets/landing2.png'
-import img3 from '../assets/landing3.png'
-import img4 from '../assets/landing4.png'
-import img5 from '../assets/landing5.png'
+import img1 from '../assets/Landing1.svg'
+import img2 from '../assets/Landing2.svg'
+import img3 from '../assets/Landing3.svg'
+import img4 from '../assets/Landing4.svg'
+import img5 from '../assets/Landing5.svg'
+import img6 from '../assets/Landing6.svg'
+import img7 from '../assets/Landing7.svg'
 import lastgra from '../assets/LandingLastGra.svg'
 
 // 그라데이션 이동 애니메이션 정의
@@ -147,6 +149,9 @@ const Landing = () => {
       <Img src={img3} />
       <Img src={img4} />
       <Img src={img5} />
+      <Btn as={Link} to="/myfit"></Btn>
+      <Img src={img6} />
+      <Img src={img7} />
       <Img src={lastgra} />
       <Btn as={Link} to="/myfit">
         <div>지금 티쳐핏 만나러 가기</div>

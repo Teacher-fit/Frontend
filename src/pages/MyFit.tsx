@@ -9,7 +9,7 @@ import Header from '../components/Header'
 import DetailIcon from '../assets/DetailIcon.svg'
 import Loading from '../components/Loading'
 //import DetailModal from '../components/DetailModal'
-//import Tooltip from '../components/Tooltip'
+import Tooltip from '../components/Tooltip'
 
 // 서버 URL 상수
 const SERVER_URL =
@@ -235,24 +235,17 @@ const MyFit = () => {
                   color: '#6E75F5',
                   fontSize: '16px',
                   marginRight: '8px',
+                  marginBottom: '6px',
                 }}
               >
                 에듀테크 도구 활용
               </span>
-              {/* 
-                {isOpenModal && (
-                <DetailModal onClickToggleModal={onClickToggleModal}>
-                  
-                </DetailModal>
-              )}
-              */}
-              {/* 
-                <Tooltip message="에듀테크" direction="top">
+              <Tooltip
+                message="<h3>에듀테크 도구 활용</h3>TeacherFit은 교사가 수업을 설계할 때, 에듀테크 도구를 사용할 수 있도록 도와줍니다. 에듀테크 도구를 활용하면 다양한 기술 기반 콘텐츠를 수업에 적용하여 학생들의 흥미와 학습 이해도를 높일 수 있습니다."
+                direction="top"
+              >
                 <S.Detail src={DetailIcon} alt="에듀테크" />
               </Tooltip>
-              */}
-
-              <S.Detail src={DetailIcon} onClick={onClickToggleModal} />
             </div>
           </S.HeadingWrapper>
           <div style={{ marginBottom: '23px' }}></div>
