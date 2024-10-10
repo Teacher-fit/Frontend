@@ -9,10 +9,11 @@ interface TooltipProps {
 
 const Tooltip = ({ children, message, direction }: TooltipProps) => {
   return (
-    <>
+    <Wrapper>
       {children}
-      <Content>{message}</Content>
-    </>
+      {/* dangerouslySetInnerHTML로 HTML 처리 */}
+      <Content dangerouslySetInnerHTML={{ __html: message }} />
+    </Wrapper>
   )
 }
 
@@ -23,4 +24,39 @@ const tooltip = keyframes`
   40% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 1;}
+`
+
+const Wrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`
+
+const Content = styled.div`
+  visibility: hidden;
+  background-color: #FDFDFF; 
+  color: #000; 
+  text-align: left;
+  padding: 10px;
+  padding-left: 12px;
+  border-radius: 8px;
+  border: 1px solid #D3D5FF; 
+  position: absolute;
+  z-index: 1;
+  bottom: 100%; /* 기본적으로 위쪽에 툴팁을 표시 */
+  left: 30%;
+  transform: translateX(-70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  min-width: 300px;
+  margin-bottom: 10px;
+
+  ${Wrapper}:hover & {
+    visibility: visible;
+    opacity: 1;
+    animation: ${tooltip} 0.5s ease-in-out;
+  }
+
+  strong {
+    font-weight: bold;
+  }
 `

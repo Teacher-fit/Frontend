@@ -16,11 +16,11 @@ import CopyIcon from '../assets/CopyIcon.svg'
 const MyFitResult = () => {
   const [loading, setLoading] = useState(true)
   const location = useLocation()
-  //const prevdata = useState<Object>
+  const prevdata = useState<Object>
   const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
-  //const ansString = JSON.stringify(content);
   const ansString = content
   const [activeButton, setActiveButton] = useState<string>('home')
+
 
   // 버튼 클릭 시 active 상태 변경
   const handleButtonClick = (buttonName: string) => {
@@ -31,7 +31,7 @@ const MyFitResult = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 1500) // 1.5초
+    }, 0) 
 
     return () => clearTimeout(timer)
   }, [])
@@ -46,7 +46,7 @@ const MyFitResult = () => {
           <Menu />
           <AnswerBox>
             <AnswerInfo>
-              <img src={ChatLogo} />
+              <img src={ChatLogo} style={{marginBottom: '10px'}} />
             </AnswerInfo>
             <MarkdownWrapper>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -57,6 +57,7 @@ const MyFitResult = () => {
               <Icon
                 src={ReloadIcon}
                 // TODO: 답변 Reload 기능 구현
+
               />
               <CopyToClipboard
                 text={ansString}
@@ -99,7 +100,9 @@ export const AnswerBox = styled.div`
   border-radius: 16px;
   background-color: #f7f7ff;
   border: solid #d3d5ff;
-  padding: 20px;
+  padding: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
   font-size: 18px;
   resize: none;
   overflow: hidden;

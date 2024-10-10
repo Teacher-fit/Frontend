@@ -40,8 +40,8 @@ export const LoadingWrapper = styled.div`
 `;
 
 export const IdeaIcon = styled.svg`
-  width: 180px;
-  height: 180px;
+  width: 120px;
+  height: 120px;
   animation: ${scaleUp} 2s ease-in-out infinite;
 `;
 
