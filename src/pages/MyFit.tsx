@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 import * as S from './MyFit.style'
 import { useNavigate } from 'react-router-dom'
 import TextbookTable from '../components/TextbookTable'
@@ -8,7 +8,6 @@ import Menu from '../components/Menu'
 import Header from '../components/Header'
 import DetailIcon from '../assets/DetailIcon.svg'
 import Loading from '../components/Loading'
-//import DetailModal from '../components/DetailModal'
 import Tooltip from '../components/Tooltip'
 
 // 서버 URL 상수
@@ -27,11 +26,6 @@ interface RequestData {
 
 // Home 컴포넌트 정의
 const MyFit = () => {
-  const [isOpenModal, setOpenModal] = useState<boolean>(false)
-  const onClickToggleModal = useCallback(() => {
-    setOpenModal(!isOpenModal)
-  }, [isOpenModal])
-
   const [isComplete, setIsComplete] = useState(false) // TextbookTable에서 받는 완료 상태
   const [selectedIds, setSelectedIds] = useState<number[]>([]) // 선택된 ID 배열 -> TextbookTable 단원 배열?
   const [responseData, setResponseData] = useState(null) // 서버 응답 상태 추가
@@ -97,7 +91,10 @@ const MyFit = () => {
       const response = await axios.post(SERVER_URL, requestData)
       console.log('서버 응답:', response.data)
       setResponseData(response.data) // 응답 데이터 저장
-      navigate('/result', { state: { content: response.data.content } }) // 응답 데이터와 함께 이동
+      // 요청 데이터와 응답 데이터를 함께 전달하여 이동
+      navigate('/result', {
+        state: { content: response.data.content, requestData },
+      })
     } catch (error) {
       console.error('데이터 전송 실패:', error)
     } finally {

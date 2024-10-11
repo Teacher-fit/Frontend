@@ -16,16 +16,8 @@ import CopyIcon from '../assets/CopyIcon.svg'
 const MyFitResult = () => {
   const [loading, setLoading] = useState(true)
   const location = useLocation()
-  const prevdata = useState<Object>
   const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
   const ansString = content
-  const [activeButton, setActiveButton] = useState<string>('home')
-
-
-  // 버튼 클릭 시 active 상태 변경
-  const handleButtonClick = (buttonName: string) => {
-    setActiveButton(buttonName)
-  }
 
   // 로딩 추가
   useEffect(() => {
@@ -57,6 +49,7 @@ const MyFitResult = () => {
               <Icon
                 src={ReloadIcon}
                 // TODO: 답변 Reload 기능 구현
+                
 
               />
               <CopyToClipboard
