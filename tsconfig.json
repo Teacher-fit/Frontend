@@ -5,6 +5,8 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noUnusedLocals": false,  // 사용되지 않는 로컬 변수 경고 무시
+    "noUnusedParameters": false // 사용되지 않는 매개변수 경고 무시
   }
 }
