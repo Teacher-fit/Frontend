@@ -7,7 +7,7 @@ interface TooltipProps {
   direction?: string // direction이 선택적일 경우
 }
 
-const Tooltip = ({ children, message, direction }: TooltipProps) => {
+const Tooltip = ({ children, message}: TooltipProps) => {
   return (
     <Wrapper>
       {children}
