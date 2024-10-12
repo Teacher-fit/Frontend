@@ -140,6 +140,10 @@ export const Btn = styled.button`
     outline: none;
     border: none;
   }
+
+  @media screen and (max-width: 768px) {  //모바일 환경
+    height: 60px;
+  }
 `
 
 // Landing 페이지 컴포넌트
