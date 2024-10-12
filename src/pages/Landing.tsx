@@ -112,7 +112,7 @@ export const Img = styled.img`
 // 버튼 스타일
 export const Btn = styled.button`
   width: clamp(
-    150px,
+    180px,
     20%,
     300px
   ); /* 최소, 최대 값을 설정해 반응형으로 버튼 크기 조절 */

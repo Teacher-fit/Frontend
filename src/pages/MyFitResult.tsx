@@ -23,7 +23,7 @@ const MyFitResult = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 0) 
+    }, 0)
 
     return () => clearTimeout(timer)
   }, [])
@@ -38,7 +38,7 @@ const MyFitResult = () => {
           <Menu />
           <AnswerBox>
             <AnswerInfo>
-              <img src={ChatLogo} style={{marginBottom: '10px'}} />
+              <img src={ChatLogo} style={{ marginBottom: '10px' }} />
             </AnswerInfo>
             <MarkdownWrapper>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -49,8 +49,6 @@ const MyFitResult = () => {
               <Icon
                 src={ReloadIcon}
                 // TODO: 답변 Reload 기능 구현
-                
-
               />
               <CopyToClipboard
                 text={ansString}
@@ -84,6 +82,19 @@ export const Root = styled.div`
   max-width: 900px;
   max-width: 1100px;
   margin: 0 auto;
+  overflow-x: hidden;
+
+  // layout
+  @media screen and (max-width: 768px) {
+    //모바일 환경
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    //pc 환경
+    margin-left: 220px;
+    margin-right: 220px;
+  }
 `
 
 export const AnswerBox = styled.div`

@@ -34,6 +34,7 @@ export const DivLogoZone = styled.div`
   @media screen and (max-width: 768px) {
     flex-wrap: wrap; /* 모바일에서 콘텐츠가 줄바꿈 되도록 설정 */
     justify-content: center; /* 가운데 정렬 */
+    scale: 0.8;
   }
 
   @media screen and (min-width: 769px) {
