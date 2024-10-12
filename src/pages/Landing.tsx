@@ -109,28 +109,32 @@ export const Img = styled.img`
   object-fit: cover;
 `
 
-// 버튼 스타일 (필요에 따라 수정 가능)
+// 버튼 스타일
 export const Btn = styled.button`
-  width: 20%;
+  width: clamp(
+    150px,
+    20%,
+    300px
+  ); /* 최소, 최대 값을 설정해 반응형으로 버튼 크기 조절 */
   background: linear-gradient(92deg, #868df6, #4049f4);
-  background-size: 300% 300%;
   color: #ffffff;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.15em;
   text-align: center;
-  border-radius: 1000px;
-  padding: 20px 14px;
   white-space: nowrap;
+  border-radius: 100px;
+  padding: 20px 14px;
   position: fixed;
   display: flex;
   align-items: center;
   left: 50%;
-  bottom: 80px;
+  bottom: 7%;
   transform: translateX(-50%);
   cursor: pointer;
   justify-content: center;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
-  animation: ${gradientMove} 8s linear infinite;
+  animation: ${gradientMove} 5s linear infinite;
+  z-index: 10;
 
   &:focus {
     outline: none;
@@ -154,7 +158,7 @@ const Landing = () => {
       <Img src={img7} />
       <Img src={lastgra} />
       <Btn as={Link} to="/myfit">
-        <div>지금 티쳐핏 만나러 가기</div>
+        <div>티쳐핏 만나러 가기</div>
       </Btn>
     </Root>
   )
