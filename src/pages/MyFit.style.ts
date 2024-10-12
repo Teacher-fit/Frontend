@@ -1,13 +1,23 @@
 import styled from 'styled-components'
 
 export const Root = styled.div`
-  export const Root = styled.div
   min-height: 80vh; /* Viewport Height, 화면 전체 높이 */
   display: flex;
   flex-direction: column; /* Column으로 쌓이도록 설정 */
   padding: 0;
   max-width: 1100px;
   margin: 0 auto;
+  overflow: hidden;
+
+  // layout
+  @media screen and (max-width: 768px) {  //모바일 환경
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+   @media screen and (min-width: 768px) {  //pc 환경
+    margin-left: 220px;
+    margin-right: 220px;
+  }
 ` 
 
 export const SchoolMenu = styled.div`
@@ -44,16 +54,29 @@ export const SchoolCategory = styled.button<{ isActive1: boolean }>`
     outline: none;
     border: none;
   }
+
+  @media screen and (max-width: 768px) {  //모바일 환경
+    margin-left: 8px;
+    margin-right: 0px;
+    font-size: 17.5px;
+  }
+
 `;
 
 export const SearchBox = styled.div`
   background-color: #fafafa;
-  padding: 43px;
-  
   border-color: grey;
   border-style: solid;
   border-width: 0.5px 0px 0px 0px;
   margin-bottom: 0px;
+  white-space: nowrap;
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    padding-top: 30px;
+  }
+  @media screen and (min-width: 769px) {
+    padding: 43px;
+  }
 `;
 
 export const FilterMenu = styled.div`
@@ -62,18 +85,22 @@ export const FilterMenu = styled.div`
 `;
 
 export const Label = styled.p`
-  margin-right: 44px;
-  margin-top: 0px;
   margin-bottom: 0px;
-  font-size: 20px;
   color: #000000;
+  @media screen and (max-width: 768px) { /* 모바일 */
+    margin-top: 3.5px;
+    margin-right: 30px;
+    font-size: 18px;
+  }
+  @media screen and (min-width: 769px) { /* PC */
+    margin-top: 0px;
+    margin-right: 40px;
+    font-size: 20px;
+  }
 `;
 
 export const FilterCategory = styled.button<{ isActive2: boolean }>`
   border-radius: 40px;
-  padding: 6px 40px;
-  margin-right: 15px;
-  font-size: 20px;
   border: solid #D9D9D9;
   color: ${({ isActive2 }) => (isActive2 ? '#ffffff' : '#666666')}; 
   transition: all 0.3s ease;
@@ -86,6 +113,17 @@ export const FilterCategory = styled.button<{ isActive2: boolean }>`
   &:focus {
     outline: none; 
     border: solid #D9D9D9;
+  }
+  
+  @media screen and (max-width: 768px) { /* 모바일 */
+    padding: 5px 20px;
+    text-align: center;
+    margin-right: 8px;
+  }
+  @media screen and (min-width: 769px) { /* PC */
+    padding: 6px 40px;
+    margin-right: 15px;
+    font-size: 20px;
   }
 `;
 
@@ -114,7 +152,7 @@ export const OlContainer = styled.div`
 
 export const Ol = styled.ol`
   list-style-type: none;
-  color: #666666;
+  color: #d9d9d9;
 `;
 
 export const Li = styled.li`

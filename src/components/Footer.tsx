@@ -13,7 +13,6 @@ const Footer = () => {
             src={Copyright}
             alt="copyrightCOPYRIGHT ©️ TEACHERFIT.ALL RIGHTS RESERVED"
           />
-          <S.Span>About TeacherFit</S.Span>
         </S.DivLogoZone>
       </S.DivContents>
     </S.FooterContainer>
