@@ -21,6 +21,11 @@
 <br>
 <br>
 <br>
+## 🖱️ FE Dev Log 
+https://ruiiary.notion.site/TeacherFit-FE-Dev-Log-a542b958e09e4bbfa585ba6d533888fd
+<br>
+<br>
+<br>
 ## 🤍 TEAM 영이다섯개
 | ![Team Member 1](https://via.placeholder.com/100) | ![Team Member 2](https://via.placeholder.com/100) | ![Team Member 3](https://via.placeholder.com/100) | ![Team Member 4](https://via.placeholder.com/100) |
 | :----------------------------------: | :----------------------------------: | :----------------------------------: | :----------------------------------: |
