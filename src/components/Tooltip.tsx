@@ -38,17 +38,17 @@ const Content = styled.div`
   text-align: left;
   padding: 10px;
   padding-left: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #D3D5FF; 
   position: absolute;
   z-index: 1;
   bottom: 100%; /* 기본적으로 위쪽에 툴팁을 표시 */
-  left: 30%;
-  transform: translateX(-70%);
+  left: 0%;
+  transform: translateX(-95%);
   opacity: 0;
   transition: opacity 0.3s;
   min-width: 300px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
   ${Wrapper}:hover & {
     visibility: visible;
