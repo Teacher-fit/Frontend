@@ -10,7 +10,7 @@ import Landing from './pages/Landing'
 
 const App: React.FC = () => {
   useEffect(() => {
-    document.title = 'TeacherFit'
+    document.title = 'TeacherFit - AI 기반 에듀테크 학습활동 추천 서비스'
   }, [])
 
   return (
