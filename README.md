@@ -1,5 +1,5 @@
 ## ✏️TeacherFit
-생성형 AI 기반 에듀테크 학습 활동 추천, <strong>TeacherFit</strong>
+교사를 위한 생성형 AI 기반 에듀테크 학습 활동 추천 플랫폼, <strong>TeacherFit</strong>
 <br>
 <br>
 ## 🧑‍🏫 About TeacherFit
