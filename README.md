@@ -2,6 +2,10 @@
 교사를 위한 생성형 AI 기반 에듀테크 학습 활동 추천 플랫폼, <strong>TeacherFit</strong>
 <br>
 <br>
+## 🚀Tech Stack
+
+<br>
+<br>
 ## 🧑‍🏫 About TeacherFit
 ![1](https://github.com/user-attachments/assets/e9e63f3b-e540-4843-8793-dc8a88c1e19c)
 ![2](https://github.com/user-attachments/assets/b1a7b603-cb8d-4610-966d-5c5a9c7ece57)
