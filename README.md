@@ -38,12 +38,13 @@ https://ruiiary.notion.site/TeacherFit-FE-Dev-Log-a542b958e09e4bbfa585ba6d533888
 <br>
 <br>
 ## 🤍 TEAM 영이다섯개
-| ![Team Member 1](https://via.placeholder.com/100) | ![Team Member 2](https://via.placeholder.com/100) | ![Team Member 3](https://via.placeholder.com/100) | ![Team Member 4](https://via.placeholder.com/100) |
+| ![Team Member 1](https://github.com/user-attachments/assets/734859d5-146c-49cf-8b58-38b8791ff00d) | ![Team Member 2](https://github.com/user-attachments/assets/31815369-2e25-4319-bcd2-10a05c810758) | ![Team Member 3](https://github.com/user-attachments/assets/b40ea3a8-6753-4284-a556-949a06df00f0) | ![Team Member 4](https://github.com/user-attachments/assets/aa772a5d-2dc7-4d0a-95b3-52953f3d0747) |
 | :----------------------------------: | :----------------------------------: | :----------------------------------: | :----------------------------------: |
 | **✏️ 윤은지**                   | **✏️ 최은진**                   | **💻 문서영**                   | **🎨 전윤서**                   |
 | 기획                             | 기획                             | 백엔드                              | 프론트엔드                              |
 | #교육공학과 #팀장                            | #교육공학과 #디자이너                            | #컴퓨터공학과 #AI #BE                           | #융합콘텐츠학과 #UIUX #FE                           |
 | "누구도 소외되지 않는 세상을 만들고자 하는 예비 교육자"                     | "재미있고 창의적인 학습 경험을 꿈꾸는 예비 교육자"                     | "세상의 변화를 만드는 개발자"                     | "더 나은 사용자경험을 위해 노력하는 개발자"                     |
+
 
 
 
