@@ -1,8 +1,13 @@
 ## ✏️ TeacherFit
 #### 교사를 위한 생성형 AI 기반 에듀테크 학습 활동 추천 플랫폼, <strong>TeacherFit</strong>
 <br>
-<br>
+
 ## 🚀 Tech Stack
+### Front-end
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
 
 <br>
 <br>
