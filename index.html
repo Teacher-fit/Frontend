@@ -78,9 +78,23 @@
     <meta
       name="msapplication-TileImage"
       content="./public/faviconFiles/ms-icon-144x144.png"
-    />
+    />ㅂ
     <meta name="theme-color" content="#ffffff" />
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-T5PTYF6M48"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+
+    gtag('config', 'G-T5PTYF6M48')
+  </script>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
