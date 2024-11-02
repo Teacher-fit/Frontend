@@ -10,10 +10,6 @@ import DetailIcon from '../assets/DetailIcon.svg'
 import Loading from '../components/Loading'
 import Tooltip from '../components/Tooltip'
 
-// 서버 URL 상수
-const SERVER_URL =
-  'https://port-0-teachre-fit-m1rrtbdrebbb9bad.sel4.cloudtype.app/edu-recommend'
-
 // requestData의 타입 정의
 interface RequestData {
   grade: number | null
@@ -26,6 +22,8 @@ interface RequestData {
 
 // Home 컴포넌트 정의
 const MyFit = () => {
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL
+
   const [isComplete, setIsComplete] = useState(false) // TextbookTable에서 받는 완료 상태
   const [selectedIds, setSelectedIds] = useState<number[]>([]) // 선택된 ID 배열 -> TextbookTable 단원 배열?
   const [responseData, setResponseData] = useState(null) // 서버 응답 상태 추가
@@ -79,7 +77,7 @@ const MyFit = () => {
       requirement: value,
     }))
   }
-  // AutoResizeInputBox의 onChange 핸들러를 수정합니다.
+  // AutoResizeInputBox의 onChange 핸들러 수정
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     handleInputChange(e.target.value)
   }
@@ -241,7 +239,11 @@ const MyFit = () => {
                 message="<h3>에듀테크 도구 활용</h3>TeacherFit은 교사가 수업을 설계할 때, 에듀테크 도구를 사용할 수 있도록 도와줍니다. 에듀테크 도구를 활용하면 다양한 기술 기반 콘텐츠를 수업에 적용하여 학생들의 흥미와 학습 이해도를 높일 수 있습니다."
                 direction="top"
               >
-                <S.Detail style={{scale: 0.9}} src={DetailIcon} alt="에듀테크" />
+                <S.Detail
+                  style={{ scale: 0.9 }}
+                  src={DetailIcon}
+                  alt="에듀테크"
+                />
               </Tooltip>
             </div>
           </S.HeadingWrapper>

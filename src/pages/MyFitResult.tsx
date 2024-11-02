@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import axios from 'axios'
 
 import Header from '../components/Header'
 import Menu from '../components/Menu'
@@ -16,8 +17,27 @@ import CopyIcon from '../assets/CopyIcon.svg'
 const MyFitResult = () => {
   const [loading, setLoading] = useState(true)
   const location = useLocation()
-  const { content } = location.state || { content: '응답이 없습니다.' } // 서버 응답 데이터 받기
+  const { content, requestData } = location.state || {}
   const ansString = content
+
+  const [responseData, setResponseData] = useState(null) // 서버 응답 상태 추가
+
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL
+
+  const reloadData = async () => {
+    console.log(requestData)
+    console.log(responseData)
+    setLoading(true) // 로딩 시작
+    try {
+      const response = await axios.post(SERVER_URL, requestData)
+      console.log('서버 응답:', response.data)
+      setResponseData(response.data) // 응답 데이터 저장 (자동 리렌더링 유도)
+    } catch (error) {
+      console.error('데이터 전송 실패:', error)
+    } finally {
+      setLoading(false) // 로딩 종료
+    }
+  }
 
   // 로딩 추가
   useEffect(() => {
@@ -46,10 +66,9 @@ const MyFitResult = () => {
               </ReactMarkdown>
             </MarkdownWrapper>
             <IconWrapper>
-              <Icon
-                src={ReloadIcon}
-                // TODO: 답변 Reload 기능 구현
-              />
+              <Button as="button" onClick={reloadData}>
+                <Icon src={ReloadIcon} />
+              </Button>
               <CopyToClipboard
                 text={ansString}
                 onCopy={() => alert('결과가 복사되었습니다.')}
@@ -205,4 +224,8 @@ export const BtnContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 58px;
+`
+
+export const Button = styled.button`
+  all: unset;
 `
