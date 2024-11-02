@@ -6,7 +6,7 @@ import TextbookTable from '../components/TextbookTable'
 import AutoResizeInputBox from '../components/AutoResizeInputBox'
 import Menu from '../components/Menu'
 import Header from '../components/Header'
-import DetailIcon from '../assets/DetailIcon.svg'
+import DetailIcon from '../../public/assets/DetailIcon.svg'
 import Loading from '../components/Loading'
 import Tooltip from '../components/Tooltip'
 

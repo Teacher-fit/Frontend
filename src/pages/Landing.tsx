@@ -1,14 +1,14 @@
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import img1 from '../assets/Landing1.svg'
-import img2 from '../assets/Landing2.svg'
-import img3 from '../assets/Landing3.svg'
-import img4 from '../assets/Landing4.svg'
-import img5 from '../assets/Landing5.svg'
-import img6 from '../assets/Landing6.svg'
-import img7 from '../assets/Landing7.svg'
-import lastgra from '../assets/LandingLastGra.svg'
+import img1 from '../../public/assets/Landing1.svg'
+import img2 from '../../public/assets/Landing2.svg'
+import img3 from '../../public/assets/Landing3.svg'
+import img4 from '../../public/assets/Landing4.svg'
+import img5 from '../../public/assets/Landing5.svg'
+import img6 from '../../public/assets/Landing6.svg'
+import img7 from '../../public/assets/Landing7.svg'
+import lastgra from '../../public/assets/LandingLastGra.svg'
 
 // 그라데이션 이동 애니메이션 정의
 const gradientMove = keyframes`

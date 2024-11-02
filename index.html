@@ -73,13 +73,28 @@
       sizes="16x16"
       href="./public/faviconFiles/favicon-16x16.png"
     />
-    <link rel="manifest" href="./public/faviconFiles/manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta
       name="msapplication-TileImage"
       content="./public/faviconFiles/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .then((registration) => {
+            console.log(
+              'Service Worker registered with scope:',
+              registration.scope
+            )
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error)
+          })
+      }
+    </script>
   </head>
   <!-- Google tag (gtag.js) -->
   <script

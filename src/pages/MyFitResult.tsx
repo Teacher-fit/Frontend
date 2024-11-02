@@ -10,9 +10,9 @@ import Header from '../components/Header'
 import Menu from '../components/Menu'
 import Loading from '../components/Loading'
 
-import ChatLogo from '../assets/ChatLogo.svg'
-import ReloadIcon from '../assets/ReloadIcon.svg'
-import CopyIcon from '../assets/CopyIcon.svg'
+import ChatLogo from '../../public/assets/ChatLogo.svg'
+import ReloadIcon from '../../public/assets/ReloadIcon.svg'
+import CopyIcon from '../../public/assets/CopyIcon.svg'
 
 const MyFitResult = () => {
   const [loading, setLoading] = useState(true)

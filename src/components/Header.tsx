@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './Header.style'
 
 import { Link } from 'react-router-dom'
-import logo from '../assets/LogoTitle.svg'
+import logo from '../../public/assets/LogoTitle.svg'
 
 const Header = () => {
   return (

@@ -1,7 +1,7 @@
 // src/components/loading/Loading.tsx
 import React from 'react'
 import * as s from './Loading.style'
-import Idea from '../assets/idea.svg'
+import Idea from '../../public/assets/idea.svg'
 
 const Loading = () => (
   <s.PageWrapper>
