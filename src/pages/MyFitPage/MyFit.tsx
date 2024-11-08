@@ -2,13 +2,13 @@ import axios from 'axios'
 import { useState } from 'react'
 import * as S from './MyFit.style'
 import { useNavigate } from 'react-router-dom'
-import TextbookTable from '../components/TextbookTable'
-import AutoResizeInputBox from '../components/AutoResizeInputBox'
-import Menu from '../components/Menu'
-import Header from '../components/Header'
-import DetailIcon from '../../public/assets/DetailIcon.svg'
-import Loading from '../components/Loading'
-import Tooltip from '../components/Tooltip'
+import TextbookTable from '../../components/TextbookTable'
+import AutoResizeInputBox from '../../components/AutoResizeInputBox'
+import Menu from '../../components/Menu/Menu'
+import Header from '../../components/Header/Header'
+import DetailIcon from '../../../public/assets/DetailIcon.svg'
+import Loading from '../../components/Loading/Loading'
+import Tooltip from '../../components/Tooltip'
 
 // requestData의 타입 정의
 interface RequestData {
@@ -91,7 +91,11 @@ const MyFit = () => {
       setResponseData(response.data) // 응답 데이터 저장
       // 요청 데이터와 응답 데이터를 함께 전달하여 이동
       navigate('/result', {
-        state: { content: response.data.content, requestData },
+        state: {
+          content: response.data.content,
+          use_video: response.data.use_video,
+          requestData,
+        },
       })
     } catch (error) {
       console.error('데이터 전송 실패:', error)
@@ -109,13 +113,13 @@ const MyFit = () => {
           <Menu />
           <S.SchoolMenu>
             <S.SchoolCategory
-              isActive1={false}
+              $isActive1={false}
               onClick={() => alert('콘텐츠 개발중입니다.')}
             >
               초등학교
             </S.SchoolCategory>
             <S.SchoolCategory
-              isActive1={selectedSchool === 1}
+              $isActive1={selectedSchool === 1}
               onClick={() => handleSchoolClick(1)}
               style={{
                 backgroundColor: selectedSchool === 1 ? '#6E75F5' : '#ffffff',
@@ -124,7 +128,7 @@ const MyFit = () => {
               중학교
             </S.SchoolCategory>
             <S.SchoolCategory
-              isActive1={false}
+              $isActive1={false}
               onClick={() => alert('콘텐츠 개발중입니다.')}
             >
               고등학교
@@ -138,7 +142,7 @@ const MyFit = () => {
                 <S.FilterCategory
                   key={index}
                   onClick={() => handleFilterChange('grade', index + 1)}
-                  isActive2={
+                  $isActive2={
                     requestData.grade !== null &&
                     requestData.grade - 1 === index
                   }
@@ -159,7 +163,7 @@ const MyFit = () => {
               <S.Label>영역 선택</S.Label>
               <S.FilterCategory
                 onClick={() => setClicked1(!clicked1)}
-                isActive2={clicked1}
+                $isActive2={clicked1}
                 style={{
                   backgroundColor: clicked1 ? '#6E75F5' : '#ffffff',
                 }}
@@ -172,7 +176,7 @@ const MyFit = () => {
               <S.Label>과목 선택</S.Label>
               <S.FilterCategory
                 onClick={() => setClicked2(!clicked2)}
-                isActive2={clicked2}
+                $isActive2={clicked2}
                 style={{
                   backgroundColor: clicked2 ? '#6E75F5' : '#ffffff',
                 }}
@@ -181,7 +185,7 @@ const MyFit = () => {
               </S.FilterCategory>
               <S.FilterCategory
                 onClick={() => alert('콘텐츠 준비중입니다.')}
-                isActive2={false}
+                $isActive2={false}
               >
                 도덕②
               </S.FilterCategory>
@@ -191,13 +195,13 @@ const MyFit = () => {
               <S.Label>출판사 선택</S.Label>
               <S.FilterCategory
                 onClick={() => alert('콘텐츠 준비중입니다.')}
-                isActive2={false}
+                $isActive2={false}
               >
                 미래엔
               </S.FilterCategory>
               <S.FilterCategory
                 onClick={() => setClicked3(!clicked3)}
-                isActive2={clicked3}
+                $isActive2={clicked3}
                 style={{
                   backgroundColor: clicked3 ? '#6E75F5' : '#ffffff',
                 }}

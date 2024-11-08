@@ -12,12 +12,11 @@ export const InputBox = styled.textarea`
   min-height: 130px;
   border-radius: 8px;
   background-color: #f7f7ff;
-  border: solid #d3d5ff;
+  border: solid #d3d5ff 0.7px;
   padding: 16px;
   font-size: 18px;
   resize: none;
   overflow: hidden;
-  border: 0;
   color: #666666;
 
   &::placeholder {
@@ -50,11 +49,7 @@ const AutoResizeInputBox: React.FC<AutoResizeInputBoxProps> = ({
   }, [])
 
   return (
-    <InputBox
-      ref={textareaRef}
-      placeholder={placeholder}
-      onChange={onChange} 
-    />
+    <InputBox ref={textareaRef} placeholder={placeholder} onChange={onChange} />
   )
 }
 

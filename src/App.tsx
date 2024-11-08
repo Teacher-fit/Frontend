@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './GlobalStyle'
 
-import Footer from '../src/components/Footer'
+import Footer from './components/Footer/Footer'
 import ScrollToTop from '../src/components/ScrollToTop' // ScrollToTop 파일 경로
-import MyFitResult from './pages/MyFitResult'
-import MyFit from './pages/MyFit'
+import MyFitResult from './pages/MyFitResultPage/MyFitResult'
+import MyFit from './pages/MyFitPage/MyFit'
 import Landing from './pages/Landing'
 
 const App: React.FC = () => {

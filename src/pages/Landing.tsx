@@ -10,19 +10,6 @@ import img6 from '../../public/assets/Landing6.svg'
 import img7 from '../../public/assets/Landing7.svg'
 import lastgra from '../../public/assets/LandingLastGra.svg'
 
-// 그라데이션 이동 애니메이션 정의
-const gradientMove = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`
-
 // 글리터 이동 애니메이션 정의
 const glitterMove = keyframes`
   0% {
@@ -114,7 +101,7 @@ export const Btn = styled.button`
   width: clamp(
     180px,
     20%,
-    300px
+    250px
   ); /* 최소, 최대 값을 설정해 반응형으로 버튼 크기 조절 */
   background: linear-gradient(92deg, #868df6, #4049f4);
   color: #ffffff;
@@ -122,8 +109,8 @@ export const Btn = styled.button`
   font-size: 1.15em;
   text-align: center;
   white-space: nowrap;
-  border-radius: 100px;
-  padding: 20px 14px;
+  border-radius: 110px;
+  padding: 14px 14px;
   position: fixed;
   display: flex;
   align-items: center;
@@ -132,16 +119,16 @@ export const Btn = styled.button`
   transform: translateX(-50%);
   cursor: pointer;
   justify-content: center;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
-  animation: ${gradientMove} 5s linear infinite;
   z-index: 10;
+  border: #ccc 1.5px solid;
 
   &:focus {
     outline: none;
     border: none;
   }
 
-  @media screen and (max-width: 768px) {  //모바일 환경
+  @media screen and (max-width: 768px) {
+    //모바일 환경
     height: 60px;
   }
 `
@@ -157,7 +144,6 @@ const Landing = () => {
       <Img src={img3} />
       <Img src={img4} />
       <Img src={img5} />
-      <Btn as={Link} to="/myfit"></Btn>
       <Img src={img6} />
       <Img src={img7} />
       <Img src={lastgra} />
