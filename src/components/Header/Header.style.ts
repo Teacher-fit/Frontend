@@ -10,7 +10,7 @@ export const Header = styled.header`
   box-shadow: 0 20px 20px -10px rgba(32, 44, 153, 0.02);
   z-index: 10;
   text-align: left;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `
 
 export const DivContents = styled.div`

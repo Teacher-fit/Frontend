@@ -5,7 +5,7 @@ export const Menu = styled.div`
   padding: 6px;
   align-items: flex-start;
   gap: 6px;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
   margin-top: 50px;
   width: 35%;
   max-width: 1100px; /* 메뉴의 최대 너비 */
@@ -19,11 +19,11 @@ export const Menu = styled.div`
 `;
 
 
-export const MenuCategory = styled.button<{ isActive: boolean }>`
+export const MenuCategory = styled.button<{ $isActive: boolean }>`
   flex-grow: 1; /* 각 버튼이 동일한 너비를 가짐 */
-  background-color: ${({ isActive }) => (isActive ? '#D3D5FF' : '#ffffff')}; !important
+  background-color: ${({ $isActive }) => ($isActive ? '#D3D5FF' : '#ffffff')}; !important
   font-size: 15px;
-  color: ${({ isActive }) => (isActive ? '#000000' : '#000000')};
+  color: ${({ $isActive }) => ($isActive ? '#000000' : '#000000')};
   border: none;
   border-radius: 4px;
   padding: 8px 20px;

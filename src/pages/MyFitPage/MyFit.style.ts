@@ -27,9 +27,9 @@ export const SchoolMenu = styled.div`
   margin-bottom: 15px;
 `;
 
-export const SchoolCategory = styled.button<{ isActive1: boolean }>`
+export const SchoolCategory = styled.button<{ $isActive1: boolean }>`
   font-size: 20px;
-  color: ${({ isActive1 }) => (isActive1 ? '#ffffff' : '#666')}; 
+  color: ${({ $isActive1 }) => ($isActive1 ? '#ffffff' : '#666')}; 
   border: none;
   border-radius: 40px;
   padding: 12px 18px;
@@ -99,10 +99,10 @@ export const Label = styled.p`
   }
 `;
 
-export const FilterCategory = styled.button<{ isActive2: boolean }>`
+export const FilterCategory = styled.button<{ $isActive2: boolean }>`
   border-radius: 40px;
   border: solid #D9D9D9;
-  color: ${({ isActive2 }) => (isActive2 ? '#ffffff' : '#666666')}; 
+  color: ${({ $isActive2 }) => ($isActive2 ? '#ffffff' : '#666666')}; 
   transition: all 0.3s ease;
 
   &:hover, &:active {

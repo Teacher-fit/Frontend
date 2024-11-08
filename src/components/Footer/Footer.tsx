@@ -1,7 +1,7 @@
 import * as S from './Footer.style'
 
-import FooterLogo from '../../public/assets/FooterLogo.svg'
-import Copyright from '../../public/assets/Copyright.svg'
+import FooterLogo from '../../../public/assets/FooterLogo.svg'
+import Copyright from '../../../public/assets/Copyright.svg'
 
 const Footer = () => {
   return (

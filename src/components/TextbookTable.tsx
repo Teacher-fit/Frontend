@@ -64,7 +64,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                   setSelectedSectionId(null)
                   console.log(index, selectedSectionId)
                 }}
-                isClicked={selectedUnitId === index}
+                $isClicked={selectedUnitId === index}
               >
                 {unit.title}
               </StyledLi>
@@ -85,7 +85,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                     setSelectedSectionId(null) // Reset section when chapter changes
                     console.log(index, selectedSectionId)
                   }}
-                  isClicked={selectedChapterId === index}
+                  $isClicked={selectedChapterId === index}
                 >
                   {chapter.title}
                 </StyledLi>
@@ -113,7 +113,7 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
                     handleSelection(selectedUnitId, selectedChapterId, index) // Pass the selected data
                     console.log(index, selectedSectionId)
                   }}
-                  isClicked={selectedSectionId === index}
+                  $isClicked={selectedSectionId === index}
                 >
                   {section.title}
                 </StyledLi>
@@ -133,11 +133,11 @@ const TextbookTable: React.FC<TextbookTableProps> = ({
 export default TextbookTable
 
 /* Styled Components */
-const StyledLi = styled.li<{ isClicked: boolean }>`
+const StyledLi = styled.li<{ $isClicked: boolean }>`
   padding-bottom: 10px;
   transition: all 0.3s ease;
-  font-weight: ${({ isClicked }) => (isClicked ? 'bold' : 'normal')};
-  color: ${({ isClicked }) => (isClicked ? '#4049F4' : '#666666')};
+  font-weight: ${({ $isClicked }) => ($isClicked ? 'bold' : 'normal')};
+  color: ${({ $isClicked }) => ($isClicked ? '#4049F4' : '#666666')};
 
   // hover 스타일 적용
   &:hover {
