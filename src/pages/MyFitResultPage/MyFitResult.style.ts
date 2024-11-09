@@ -62,7 +62,7 @@ export const MarkdownWrapper = styled.div`
   h4,
   h5,
   h6 {
-    margin-top: 1em; /* 각 단락이 Heading으로 구분될 수 있도록 */
+    margin-top: 1.5em; /* 각 단락이 Heading으로 구분될 수 있도록 */
   }
 
   /* table의 데이터 가운데 정렬 */
@@ -78,6 +78,16 @@ export const MarkdownWrapper = styled.div`
     border: 0.3px solid lightgray;
     padding: 8px;
   }
+
+th:first-child,
+td:first-child {
+  white-space: nowrap;
+}
+
+th:last-child,
+td:last-child {
+  width: 10%;
+}
 
   /* 첫 번째 열 전체의 배경색 변경 */
   thead {
@@ -141,10 +151,13 @@ export const Button = styled.button`
 `
 
 export const VideoWrapper = styled.div`
-  width: 70%;
+  width: 60%;
   max-width: 800px;
   margin: 10px auto; /* 수평 중앙 정렬 */
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    width: 95%;
+  }
 `
