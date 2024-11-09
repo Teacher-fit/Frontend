@@ -57,12 +57,11 @@ export const MarkdownWrapper = styled.div`
 
   /* Heading 태그 앞에 마진 추가 */
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h2 {
     margin-top: 1.5em; /* 각 단락이 Heading으로 구분될 수 있도록 */
+  }
+  h3 {
+    margin-top:1em; 
   }
 
   /* table의 데이터 가운데 정렬 */
@@ -86,7 +85,7 @@ td:first-child {
 
 th:last-child,
 td:last-child {
-  width: 10%;
+  width: 14%;
 }
 
   /* 첫 번째 열 전체의 배경색 변경 */
@@ -102,6 +101,12 @@ td:last-child {
 
   li {
     margin-left: 20px;
+  }
+
+  a {
+    text-decoration: underline; /* 링크에 밑줄을 추가 */
+    font-style: italic; 
+    color: #1a0dab; /* 원하는 링크 색상 지정 */
   }
 `
 
