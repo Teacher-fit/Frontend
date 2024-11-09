@@ -138,7 +138,7 @@ export const Heading = styled.h1`
 `;
 
 export const Fit = styled.span`
-  color: #4049F4; /* 파란색으로 강조 */
+  color: #4049F4; 
   font-weight: bold; 
 `;
 
