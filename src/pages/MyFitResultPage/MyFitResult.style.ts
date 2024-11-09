@@ -104,9 +104,8 @@ td:last-child {
   }
 
   a {
-    text-decoration: underline; /* 링크에 밑줄을 추가 */
     font-style: italic; 
-    color: #1a0dab; /* 원하는 링크 색상 지정 */
+    color: #4049f4; /* 원하는 링크 색상 지정 */
   }
 `
 
